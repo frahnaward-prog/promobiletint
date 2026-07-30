@@ -2429,20 +2429,17 @@ Mobile
 @media (max-width:768px){
 
 .hero{
-
-    padding:150px 0 90px;
-
+    padding:120px 0 70px;
 }
 
 .hero h1{
-
-    font-size:3rem;
-
+    font-size:2.5rem;
 }
 
 .hero-text{
-
-    font-size:17px;
+    font-size:16px;
+    line-height:1.7;
+}
 
 }
 
@@ -2533,8 +2530,6 @@ Mobile
 
 }
 
-}
-
 /*==========================
 Small Phones
 ===========================*/
@@ -2588,5 +2583,772 @@ Small Phones
     height:52px;
 
 }
+
+}
+/* =====================================
+   PREMIUM SERVICES
+===================================== */
+
+.services{
+    padding:120px 0;
+    background:#0b0b0b;
+}
+
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+    margin-top:60px;
+}
+
+.service-card{
+    display:flex;
+    flex-direction:column;
+    background:#161616;
+    border:1px solid rgba(214,179,106,.15);
+    border-radius:22px;
+    padding:35px;
+    text-decoration:none;
+    color:#fff;
+    transition:.35s ease;
+    position:relative;
+    overflow:hidden;
+}
+
+.service-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(135deg,
+        rgba(214,179,106,.12),
+        transparent 55%);
+    opacity:0;
+    transition:.35s;
+}
+
+.service-card:hover{
+    transform:translateY(-10px);
+    border-color:#D6B36A;
+    box-shadow:0 20px 45px rgba(0,0,0,.45);
+}
+
+.service-card:hover::before{
+    opacity:1;
+}
+
+.service-icon{
+    width:70px;
+    height:70px;
+    border-radius:18px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    color:#D6B36A;
+    background:rgba(214,179,106,.08);
+    margin-bottom:25px;
+}
+
+.service-card h3{
+    font-size:28px;
+    margin-bottom:15px;
+    color:#fff;
+}
+
+.service-card p{
+    color:#cfcfcf;
+    line-height:1.7;
+    margin-bottom:25px;
+}
+
+.service-list{
+    list-style:none;
+    padding:0;
+    margin:0 0 30px;
+}
+
+.service-list li{
+    margin-bottom:12px;
+    color:#d8d8d8;
+}
+
+.service-list i{
+    color:#D6B36A;
+    margin-right:10px;
+}
+
+.service-link{
+    margin-top:auto;
+    color:#D6B36A;
+    font-weight:600;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    transition:.3s;
+}
+
+.service-card:hover .service-link{
+    gap:16px;
+}
+
+@media (max-width:768px){
+
+    .services{
+        padding:80px 0;
+    }
+
+    .service-card{
+        padding:28px;
+    }
+
+}
+/* =====================================
+   XPEL SECTION
+===================================== */
+
+.xpel-section{
+    padding:120px 0;
+    background:#101010;
+}
+
+.xpel-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:30px;
+    margin-top:60px;
+}
+
+.xpel-card{
+    background:#181818;
+    border:1px solid rgba(214,179,106,.15);
+    border-radius:22px;
+    padding:35px;
+    text-align:center;
+    transition:.35s;
+}
+
+.xpel-card:hover{
+    transform:translateY(-8px);
+    border-color:#D6B36A;
+}
+
+.xpel-card i{
+    font-size:42px;
+    color:#D6B36A;
+    margin-bottom:20px;
+}
+
+.xpel-card h3{
+    margin-bottom:15px;
+    color:#fff;
+}
+
+.xpel-card p{
+    color:#cfcfcf;
+    line-height:1.7;
+}
+/* =====================================
+   BEFORE & AFTER SLIDER
+===================================== */
+
+.before-after{
+    padding:120px 0;
+    background:#0B0B0B;
+}
+
+.comparison-slider{
+    position:relative;
+    width:100%;
+    max-width:1100px;
+    margin:60px auto;
+    aspect-ratio:16/9;
+    overflow:hidden;
+    border-radius:24px;
+    border:1px solid rgba(214,179,106,.2);
+    box-shadow:0 25px 60px rgba(0,0,0,.5);
+    user-select:none;
+    cursor:ew-resize;
+}
+
+.comparison-slider img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    pointer-events:none;
+}
+
+.comparison-after{
+    position:absolute;
+    top:0;
+    left:0;
+    width:50%;
+    height:100%;
+    overflow:hidden;
+}
+
+.comparison-after img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.comparison-handle{
+    position:absolute;
+    left:50%;
+    top:0;
+    width:3px;
+    height:100%;
+    background:#D6B36A;
+    transform:translateX(-50%);
+    z-index:20;
+}
+
+.handle-circle{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:#D6B36A;
+    color:#111;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:24px;
+    box-shadow:0 10px 35px rgba(0,0,0,.45);
+}
+
+.label{
+    position:absolute;
+    top:25px;
+    padding:12px 22px;
+    background:rgba(0,0,0,.65);
+    color:#fff;
+    font-weight:700;
+    letter-spacing:2px;
+    border-radius:40px;
+    z-index:30;
+    backdrop-filter:blur(8px);
+}
+
+.before-label{
+    left:25px;
+}
+
+.after-label{
+    right:25px;
+}
+
+.comparison-features{
+    margin-top:45px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.comparison-features .feature{
+    background:#181818;
+    border:1px solid rgba(214,179,106,.12);
+    padding:22px;
+    border-radius:18px;
+    text-align:center;
+    transition:.3s;
+}
+
+.comparison-features .feature:hover{
+    border-color:#D6B36A;
+    transform:translateY(-5px);
+}
+
+.comparison-features i{
+    color:#D6B36A;
+    font-size:28px;
+    margin-bottom:12px;
+}
+
+.comparison-button{
+    text-align:center;
+    margin-top:45px;
+}
+
+@media(max-width:768px){
+
+    .before-after{
+        padding:80px 0;
+    }
+
+    .handle-circle{
+        width:58px;
+        height:58px;
+        font-size:18px;
+    }
+
+    .label{
+        font-size:12px;
+        padding:8px 16px;
+    }
+
+}
+/* =====================================
+   TINT SHADE VISUALIZER
+===================================== */
+
+.tint-visualizer{
+    padding:120px 0;
+    background:#111;
+}
+
+.tint-viewer{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:60px;
+    align-items:center;
+    margin-top:60px;
+}
+
+.tint-image{
+    position: relative;
+    width:100%;
+    aspect-ratio:16/9;
+    overflow:hidden;
+}
+
+.tint-image img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center 50%;
+    transition:opacity .3s ease, transform .3s ease;
+}
+
+.shade-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-bottom:35px;
+}
+
+.shade-btn{
+
+    background:#181818;
+    color:#fff;
+    border:1px solid rgba(214,179,106,.25);
+    border-radius:50px;
+    padding:14px 26px;
+    cursor:pointer;
+    font-size:17px;
+    font-weight:600;
+    transition:.3s;
+
+}
+
+.shade-btn:hover{
+
+    border-color:#D6B36A;
+    color:#D6B36A;
+
+}
+
+.shade-btn.active{
+
+    background:#D6B36A;
+    color:#111;
+    border-color:#D6B36A;
+
+}
+
+.shade-card{
+
+    background:#181818;
+    border-radius:24px;
+    border:1px solid rgba(214,179,106,.15);
+    padding:40px;
+
+}
+
+.popular-badge{
+
+    display:inline-block;
+    background:#D6B36A;
+    color:#111;
+    padding:8px 18px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:20px;
+
+}
+
+.shade-card h3{
+
+    font-size:34px;
+    margin-bottom:15px;
+    color:#fff;
+
+}
+
+.shade-card p{
+
+    color:#d4d4d4;
+    line-height:1.8;
+    margin-bottom:25px;
+
+}
+
+.shade-card ul{
+
+    list-style:none;
+    padding:0;
+    margin:0 0 35px;
+
+}
+
+.shade-card li{
+
+    margin-bottom:15px;
+    color:#e2e2e2;
+
+}
+
+.shade-card i{
+
+    color:#D6B36A;
+    margin-right:10px;
+
+}
+
+@media(max-width:992px){
+
+.tint-viewer{
+
+grid-template-columns:1fr;
+
+}
+
+.tint-image{
+
+order:1;
+
+}
+
+.tint-info{
+
+order:2;
+
+}
+
+}
+/* ==================================================
+   PRO MOBILE TINT
+   MOBILE OPTIMIZATION v3.0
+   Place at the VERY END of style.css
+================================================== */
+
+@media (max-width:768px){
+
+    /* Global Section Spacing */
+    .services,
+    .before-after,
+    .tint-visualizer,
+    .why,
+    .testimonials,
+    .xpel-section,
+    .cta{
+        padding:70px 0;
+    }
+
+    /* Container */
+    .container{
+        width:92%;
+    }
+
+    /* Header */
+    .header{
+        padding:14px 0;
+    }
+
+    .logo img{
+        height:56px;
+    }
+
+    /* Hero */
+    .hero{
+        min-height:auto;
+        padding:120px 0 70px;
+    }
+
+    .hero-content{
+        text-align:center;
+        max-width:100%;
+    }
+
+    .hero-line{
+        margin:0 auto 20px;
+    }
+
+    .hero-subtitle{
+        font-size:18px;
+        letter-spacing:4px;
+        margin-bottom:16px;
+    }
+
+    .hero h1{
+        font-size:2.45rem;
+        line-height:1.08;
+        margin-bottom:18px;
+    }
+
+    .hero-text{
+        font-size:16px;
+        line-height:1.7;
+        margin-bottom:28px;
+    }
+
+    .hero-buttons{
+        gap:14px;
+    }
+
+    .btn-primary,
+    .btn-secondary{
+        width:100%;
+        min-width:100%;
+        min-height:56px;
+        padding:16px 24px;
+        font-size:16px;
+    }
+
+    /* Stats */
+    .stats{
+        margin-top:-30px;
+        padding-bottom:30px;
+    }
+
+    .stats-card{
+        grid-template-columns:1fr;
+    }
+
+    .stat{
+        padding:22px 18px;
+        border-right:none;
+        border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .stat:last-child{
+        border-bottom:none;
+    }
+
+    .stat h2{
+        font-size:44px;
+    }
+
+    .stat p{
+        font-size:12px;
+        letter-spacing:2px;
+    }
+
+    /* Section Titles */
+    .section-title{
+        margin-bottom:45px;
+    }
+
+    .section-title h2{
+        font-size:2.2rem;
+        line-height:1.15;
+    }
+
+    .section-title p{
+        font-size:13px;
+        letter-spacing:4px;
+    }
+
+    /* Services */
+    .services-grid{
+        gap:20px;
+    }
+
+    .service-card{
+        padding:24px;
+        border-radius:20px;
+    }
+
+    .service-icon{
+        width:64px;
+        height:64px;
+        margin-bottom:20px;
+    }
+
+    .service-card h3{
+        font-size:30px;
+        margin-bottom:14px;
+    }
+
+    .service-card p{
+        font-size:15px;
+        line-height:1.7;
+        margin-bottom:20px;
+    }
+
+    .service-list li{
+        margin-bottom:10px;
+    }
+
+    /* Before / After */
+    .comparison-slider{
+        margin-top:35px;
+        border-radius:18px;
+    }
+
+    .handle-circle{
+        width:56px;
+        height:56px;
+        font-size:18px;
+    }
+
+    .comparison-features{
+        gap:16px;
+        margin-top:28px;
+    }
+
+    .comparison-features .feature{
+        padding:18px;
+    }
+
+    /* Tint Visualizer */
+    .tint-viewer{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+
+    .tint-image{
+        aspect-ratio:1.9 / 1;
+        border-radius:18px;
+    }
+
+    .shade-buttons{
+        justify-content:center;
+        gap:12px;
+        margin-bottom:24px;
+    }
+
+    .shade-btn{
+        min-width:82px;
+        padding:12px 18px;
+        font-size:16px;
+    }
+
+    .shade-card{
+        padding:28px;
+        border-radius:20px;
+    }
+
+    .shade-card h3{
+        font-size:30px;
+        margin-bottom:14px;
+    }
+
+    .shade-card p{
+        font-size:15px;
+        line-height:1.7;
+    }
+
+    .shade-card li{
+        margin-bottom:12px;
+    }
+
+    /* Why Choose Us */
+    .why-grid{
+        gap:20px;
+    }
+
+    .why-card{
+        padding:26px;
+    }
+
+    /* Testimonials */
+    .testimonials-grid{
+        gap:20px;
+    }
+
+    .testimonial-card{
+        padding:26px;
+    }
+
+    .customer img{
+        width:60px;
+        height:60px;
+    }
+
+    /* CTA */
+    .cta{
+        text-align:center;
+    }
+
+    .cta h2{
+        font-size:2.3rem;
+    }
+
+    .cta p{
+        font-size:16px;
+        line-height:1.7;
+        margin-bottom:30px;
+    }
+
+    .cta-buttons{
+        gap:16px;
+    }
+
+    .cta-phone{
+        width:100%;
+        justify-content:center;
+    }
+
+    /* Footer */
+    .footer-top{
+        padding:60px 0 40px;
+    }
+
+    .footer-grid{
+        gap:35px;
+    }
+
+}
+
+/* Small Phones */
+@media (max-width:480px){
+
+    .container{
+        width:94%;
+    }
+
+    .hero{
+        padding:110px 0 60px;
+    }
+
+    .hero h1{
+        font-size:2.1rem;
+    }
+
+    .hero-subtitle{
+        font-size:16px;
+        letter-spacing:3px;
+    }
+
+    .section-title h2{
+        font-size:2rem;
+    }
+
+    .shade-btn{
+        flex:1 1 calc(50% - 8px);
+        max-width:140px;
+    }
+
+    .comparison-slider{
+        border-radius:16px;
+    }
 
 }
