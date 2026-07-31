@@ -3362,3 +3362,117 @@ order:2;
     }
 
 }
+/* ==========================================
+   PAGE HERO
+========================================== */
+
+.page-hero{
+    position: relative;
+    min-height: 65vh;
+    display: flex;
+    align-items: center;
+    padding: 160px 0 100px;
+
+    background:
+        linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.80)),
+        url("../images/cta/cta-bg.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.page-hero-content{
+    max-width: 760px;
+}
+
+.page-hero h1{
+    font-size: 72px;
+    margin: 18px 0;
+}
+
+.page-hero p{
+    max-width: 650px;
+    font-size: 20px;
+    line-height: 1.8;
+    color: var(--gray);
+}
+/*==========================================
+ABOUT STORY
+==========================================*/
+
+.about-story{
+
+    padding:120px 0;
+    background:#0b0b0b;
+
+}
+
+.about-grid{
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    align-items:center;
+
+}
+
+.about-image img{
+
+    width:100%;
+    display:block;
+    border-radius:22px;
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,.45);
+
+}
+
+.about-content h2{
+
+    font-size:56px;
+    margin:20px 0 30px;
+
+}
+
+.about-content p{
+
+    color:var(--gray);
+    line-height:1.9;
+    margin-bottom:22px;
+
+}
+
+.about-content .btn{
+
+    margin-top:15px;
+
+}
+
+@media(max-width:991px){
+
+.about-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.about-content{
+
+order:2;
+
+}
+
+.about-image{
+
+order:1;
+
+}
+
+.about-content h2{
+
+font-size:40px;
+
+}
+
+}
