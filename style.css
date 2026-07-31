@@ -4126,3 +4126,437 @@ order:-1;
 .faq-item:hover{
     box-shadow:0 15px 35px rgba(214,179,106,.15);
 }
+/* =====================================
+   GALLERY LIGHTBOX
+====================================== */
+
+.lightbox{
+
+position:fixed;
+
+inset:0;
+
+background:rgba(0,0,0,.96);
+
+display:none;
+
+justify-content:center;
+
+align-items:center;
+
+z-index:999999;
+
+padding:40px;
+
+}
+
+.lightbox img{
+
+max-width:95%;
+
+max-height:90%;
+
+border-radius:18px;
+
+box-shadow:0 30px 70px rgba(0,0,0,.6);
+
+}
+
+.close-lightbox{
+
+position:absolute;
+
+top:35px;
+
+right:45px;
+
+font-size:60px;
+
+color:white;
+
+cursor:pointer;
+
+}
+/* ===================================================
+   CONTACT PAGE
+=================================================== */
+
+.contact-hero{
+    min-height:60vh;
+}
+
+.contact-hero h1{
+
+    font-size:clamp(58px,6vw,82px);
+
+    line-height:1.05;
+
+    max-width:720px;
+
+}
+
+.contact-hero p{
+
+    max-width:650px;
+
+    font-size:22px;
+
+    line-height:1.8;
+
+}
+
+.contact-info{
+
+    padding:120px 0;
+
+}
+
+.contact-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:35px;
+
+    margin-top:60px;
+
+}
+
+.contact-card{
+
+    background:#181818;
+
+    border:1px solid rgba(214,179,106,.12);
+
+    border-radius:22px;
+
+    padding:40px;
+
+    transition:.35s;
+
+}
+
+.contact-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:var(--gold);
+
+}
+
+.contact-icon{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(214,179,106,.08);
+
+    color:var(--gold);
+
+    font-size:28px;
+
+    margin-bottom:25px;
+
+}
+
+.contact-card h3{
+
+    font-size:30px;
+
+    margin-bottom:12px;
+
+}
+
+.contact-card p{
+
+    color:var(--gray);
+
+    line-height:1.8;
+
+}
+
+.quote-form{
+
+    padding:120px 0;
+
+}
+
+.contact-form{
+
+    max-width:1000px;
+
+    margin:auto;
+
+}
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:24px;
+
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea{
+
+    width:100%;
+
+    padding:18px 22px;
+
+    background:#181818;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    color:#fff;
+
+    border-radius:16px;
+
+    font-size:17px;
+
+}
+
+.contact-form textarea{
+
+    margin-top:24px;
+
+    min-height:180px;
+
+    resize:none;
+
+}
+
+.contact-form button{
+
+    margin-top:30px;
+
+}
+/* ==========================================
+   PRICING HERO
+========================================== */
+
+.pricing-hero{
+
+    min-height:65vh;
+
+}
+
+.pricing-hero h1{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:clamp(62px,7vw,92px);
+
+    line-height:1;
+
+    margin:25px 0;
+
+}
+
+.pricing-hero p{
+
+    max-width:720px;
+
+    font-size:21px;
+
+    line-height:1.8;
+
+    color:var(--gray);
+
+}
+/* ==========================================
+   PRICING PAGE
+========================================== */
+
+.pricing-section{
+
+    padding:120px 0;
+
+    background:#0b0b0b;
+
+}
+
+.pricing-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:35px;
+
+    margin-top:70px;
+
+}
+
+.price-card{
+
+    position:relative;
+
+    background:#181818;
+
+    border:1px solid rgba(214,179,106,.15);
+
+    border-radius:24px;
+
+    padding:45px 35px;
+
+    transition:.35s;
+
+}
+
+.price-card:hover{
+
+    transform:translateY(-10px);
+
+    border-color:var(--gold);
+
+    box-shadow:0 20px 55px rgba(214,179,106,.18);
+
+}
+
+.featured{
+
+    border:2px solid var(--gold);
+
+    transform:scale(1.04);
+
+}
+
+.featured:hover{
+
+    transform:scale(1.04) translateY(-10px);
+
+}
+
+.popular-badge{
+
+    position:absolute;
+
+    top:-16px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    background:var(--gold);
+
+    color:#111;
+
+    padding:8px 22px;
+
+    border-radius:50px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+}
+
+.price-card h3{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:38px;
+
+    margin-bottom:12px;
+
+    text-align:center;
+
+}
+
+.starting{
+
+    display:block;
+
+    text-align:center;
+
+    color:var(--gray);
+
+    text-transform:uppercase;
+
+    font-size:13px;
+
+    letter-spacing:2px;
+
+}
+
+.price{
+
+    text-align:center;
+
+    font-size:64px;
+
+    font-weight:700;
+
+    color:var(--gold);
+
+    margin:20px 0 30px;
+
+}
+
+.price-card ul{
+
+    list-style:none;
+
+    margin-bottom:35px;
+
+}
+
+.price-card li{
+
+    margin-bottom:16px;
+
+    color:var(--gray);
+
+}
+
+.price-card i{
+
+    color:var(--gold);
+
+    margin-right:10px;
+
+}
+
+.price-card .btn-primary{
+
+    width:100%;
+
+}
+
+@media(max-width:991px){
+
+.pricing-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.featured{
+
+transform:none;
+
+}
+
+.featured:hover{
+
+transform:translateY(-10px);
+
+}
+
+}
