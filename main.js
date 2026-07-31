@@ -347,3 +347,34 @@ if (shadeButtons.length) {
     });
 
 }
+/* =====================================
+   FAQ ACCORDION
+====================================== */
+
+const faqItems = document.querySelectorAll(".faq-item");
+
+faqItems.forEach(item => {
+
+    const answer = item.querySelector("p");
+
+    if (!answer) return;
+
+    answer.style.display = "none";
+
+    item.addEventListener("click", () => {
+
+        const isOpen = answer.style.display === "block";
+
+        faqItems.forEach(faq => {
+
+            const p = faq.querySelector("p");
+
+            if (p) p.style.display = "none";
+
+        });
+
+        answer.style.display = isOpen ? "none" : "block";
+
+    });
+
+});
