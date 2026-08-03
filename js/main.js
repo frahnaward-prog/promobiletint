@@ -244,3 +244,188 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 });
+/* =====================================
+   BEFORE / AFTER SLIDER
+===================================== */
+
+const slider = document.querySelector(".comparison-slider");
+
+if (slider) {
+
+    const after = slider.querySelector(".comparison-after");
+    const handle = slider.querySelector(".comparison-handle");
+
+    let dragging = false;
+
+    function updateSlider(x) {
+
+        const rect = slider.getBoundingClientRect();
+
+        let position = x - rect.left;
+
+        position = Math.max(0, Math.min(position, rect.width));
+
+        const percent = (position / rect.width) * 100;
+
+        after.style.width = percent + "%";
+        handle.style.left = percent + "%";
+    }
+
+    slider.addEventListener("mousedown", (e) => {
+        dragging = true;
+        updateSlider(e.clientX);
+    });
+
+    window.addEventListener("mousemove", (e) => {
+        if (dragging) updateSlider(e.clientX);
+    });
+
+    window.addEventListener("mouseup", () => {
+        dragging = false;
+    });
+
+    slider.addEventListener("touchstart", (e) => {
+        dragging = true;
+        updateSlider(e.touches[0].clientX);
+    });
+
+    window.addEventListener("touchmove", (e) => {
+        if (!dragging) return;
+        updateSlider(e.touches[0].clientX);
+    });
+
+    window.addEventListener("touchend", () => {
+        dragging = false;
+    });
+
+}
+
+
+/* =====================================
+   TINT SHADE VISUALIZER
+===================================== */
+
+const shadeButtons = document.querySelectorAll(".shade-btn");
+const tintPreview = document.getElementById("tintPreview");
+const shadeTitle = document.getElementById("shadeTitle");
+const shadeDescription = document.getElementById("shadeDescription");
+
+if (shadeButtons.length) {
+
+    shadeButtons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            // Active button
+            shadeButtons.forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
+
+            // Fade out
+            tintPreview.style.opacity = "0";
+
+            setTimeout(() => {
+
+                // Change image
+                tintPreview.src = button.dataset.img;
+                tintPreview.alt = button.dataset.title;
+
+                // Update text
+                shadeTitle.textContent = button.dataset.title;
+                shadeDescription.textContent = button.dataset.desc;
+
+                // Keep every image aligned
+                tintPreview.style.transform = "translateY(0)";
+                tintPreview.style.objectPosition = "center 50%";
+
+                // Fade in
+                tintPreview.style.opacity = "1";
+
+            }, 180);
+
+        });
+
+    });
+
+}
+/* =====================================
+   FAQ ACCORDION
+====================================== */
+
+const faqItems = document.querySelectorAll(".faq-item");
+
+faqItems.forEach(item => {
+
+    const answer = item.querySelector("p");
+
+    if (!answer) return;
+
+    answer.style.display = "none";
+
+    item.addEventListener("click", () => {
+
+        const isOpen = answer.style.display === "block";
+
+        faqItems.forEach(faq => {
+
+            const p = faq.querySelector("p");
+
+            if (p) p.style.display = "none";
+
+        });
+
+        answer.style.display = isOpen ? "none" : "block";
+
+    });
+
+});
+/* =====================================
+   GALLERY LIGHTBOX
+===================================== */
+
+const galleryImages =
+document.querySelectorAll(".gallery-item img");
+
+const lightbox =
+document.getElementById("lightbox");
+
+const lightboxImg =
+document.getElementById("lightbox-img");
+
+const closeLightbox =
+document.querySelector(".close-lightbox");
+
+galleryImages.forEach(img=>{
+
+img.addEventListener("click",()=>{
+
+lightbox.style.display="flex";
+
+lightboxImg.src=img.src;
+
+});
+
+});
+
+if(closeLightbox){
+
+closeLightbox.onclick=()=>{
+
+lightbox.style.display="none";
+
+}
+
+}
+
+if(lightbox){
+
+lightbox.onclick=(e)=>{
+
+if(e.target===lightbox){
+
+lightbox.style.display="none";
+
+}
+
+}
+
+}
