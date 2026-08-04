@@ -6,152 +6,78 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     /* ==========================================
-       BEFORE & AFTER PREMIUM SLIDER
-    ========================================== */
+   BEFORE & AFTER SLIDER
+========================================== */
 
-    const slider = document.querySelector("#premiumSlider");
+const slider = document.querySelector(".comparison-slider");
 
-    if (slider) {
+if (slider) {
 
-        const after = slider.querySelector(".slider-after");
-        const divider = slider.querySelector(".slider-divider");
+    const after = slider.querySelector(".comparison-after");
+    const handle = slider.querySelector(".comparison-handle");
 
-        let dragging = false;
-        let animationFrame;
+    let dragging = false;
 
-        function setPosition(clientX) {
+    function updateSlider(x) {
 
-            const rect = slider.getBoundingClientRect();
+        const rect = slider.getBoundingClientRect();
 
-            let x = clientX - rect.left;
+        let position = x - rect.left;
 
-            if (x < 0) x = 0;
-            if (x > rect.width) x = rect.width;
+        position = Math.max(0, Math.min(position, rect.width));
 
-            const percent = (x / rect.width) * 100;
+        const percent = (position / rect.width) * 100;
 
-            cancelAnimationFrame(animationFrame);
+        after.style.width = percent + "%";
 
-            animationFrame = requestAnimationFrame(() => {
-
-                after.style.width = percent + "%";
-                divider.style.left = percent + "%";
-
-            });
-
-        }
-
-        function startDrag(e) {
-
-            dragging = true;
-
-            slider.classList.add("dragging");
-
-            if (e.type.includes("touch")) {
-
-                setPosition(e.touches[0].clientX);
-
-            } else {
-
-                setPosition(e.clientX);
-
-            }
-
-        }
-
-        function drag(e) {
-
-            if (!dragging) return;
-
-            e.preventDefault();
-
-            if (e.type.includes("touch")) {
-
-                setPosition(e.touches[0].clientX);
-
-            } else {
-
-                setPosition(e.clientX);
-
-            }
-
-        }
-
-        function stopDrag() {
-
-            dragging = false;
-
-            slider.classList.remove("dragging");
-
-        }
-
-        slider.addEventListener("mousedown", startDrag);
-        slider.addEventListener("click", e => setPosition(e.clientX));
-
-        window.addEventListener("mousemove", drag);
-        window.addEventListener("mouseup", stopDrag);
-
-        slider.addEventListener("touchstart", startDrag, { passive: true });
-
-        window.addEventListener("touchmove", drag, { passive: false });
-
-        window.addEventListener("touchend", stopDrag);
-
-        /* ===== Keyboard ===== */
-
-        slider.setAttribute("tabindex", "0");
-
-        slider.addEventListener("keydown", e => {
-
-            const rect = slider.getBoundingClientRect();
-
-            const current =
-                parseFloat(after.style.width) || 50;
-
-            let next = current;
-
-            if (e.key === "ArrowLeft") next -= 2;
-
-            if (e.key === "ArrowRight") next += 2;
-
-            next = Math.max(0, Math.min(100, next));
-
-            after.style.width = next + "%";
-            divider.style.left = next + "%";
-
-        });
-
-        /* ===== Resize ===== */
-
-        window.addEventListener("resize", () => {
-
-            const current =
-                parseFloat(after.style.width) || 50;
-
-            after.style.width = current + "%";
-            divider.style.left = current + "%";
-
-        });
-
-        /* ===== Intro Animation ===== */
-
-        let intro = [
-            50,55,60,64,60,55,50
-        ];
-
-        intro.forEach((v,i)=>{
-
-            setTimeout(()=>{
-
-                after.style.width=v+"%";
-                divider.style.left=v+"%";
-
-            },i*160);
-
-        });
-
+        handle.style.left = percent + "%";
     }
 
+    slider.addEventListener("mousedown", e => {
+
+        dragging = true;
+
+        updateSlider(e.clientX);
+
+    });
+
+    window.addEventListener("mousemove", e => {
+
+        if (!dragging) return;
+
+        updateSlider(e.clientX);
+
+    });
+
+    window.addEventListener("mouseup", () => {
+
+        dragging = false;
+
+    });
+
+    slider.addEventListener("touchstart", e => {
+
+        dragging = true;
+
+        updateSlider(e.touches[0].clientX);
+
+    });
+
+    window.addEventListener("touchmove", e => {
+
+        if (!dragging) return;
+
+        updateSlider(e.touches[0].clientX);
+
+    }, { passive:false });
+
+    window.addEventListener("touchend", () => {
+
+        dragging = false;
+
+    });
+
+}
     /* ==========================================
        TINT VISUALIZER
     ========================================== */
@@ -209,5 +135,126 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     }
+
+/* ==========================================
+   PREMIUM GALLERY LIGHTBOX
+========================================== */
+
+const galleryImages = document.querySelectorAll(".gallery-grid img");
+
+if (galleryImages.length) {
+
+    const lightbox = document.createElement("div");
+    lightbox.className = "lightbox";
+
+    lightbox.innerHTML = `
+        <span class="close-lightbox">&times;</span>
+        <button class="lightbox-prev">&#10094;</button>
+        <img src="" alt="Gallery Image">
+        <button class="lightbox-next">&#10095;</button>
+        <div class="lightbox-counter"></div>
+    `;
+
+    document.body.appendChild(lightbox);
+
+    const lightboxImg = lightbox.querySelector("img");
+    const closeBtn = lightbox.querySelector(".close-lightbox");
+    const prevBtn = lightbox.querySelector(".lightbox-prev");
+    const nextBtn = lightbox.querySelector(".lightbox-next");
+    const counter = lightbox.querySelector(".lightbox-counter");
+
+    let currentIndex = 0;
+
+    function showImage(index) {
+        currentIndex = index;
+        lightboxImg.src = galleryImages[index].src;
+        lightboxImg.alt = galleryImages[index].alt;
+        counter.textContent = `${index + 1} / ${galleryImages.length}`;
+    }
+
+    galleryImages.forEach((image, index) => {
+        image.style.cursor = "zoom-in";
+
+        image.addEventListener("click", () => {
+            showImage(index);
+            lightbox.style.display = "flex";
+            document.body.style.overflow = "hidden";
+        });
+    });
+
+    closeBtn.addEventListener("click", () => {
+        lightbox.style.display = "none";
+        document.body.style.overflow = "";
+    });
+
+    lightbox.addEventListener("click", e => {
+        if (e.target === lightbox) {
+            lightbox.style.display = "none";
+            document.body.style.overflow = "";
+        }
+    });
+
+    document.addEventListener("keydown", e => {
+        if (e.key === "Escape") {
+            lightbox.style.display = "none";
+            document.body.style.overflow = "";
+        }
+    });
+
+    /* ==========================================
+       LIGHTBOX NAVIGATION
+    ========================================== */
+
+    prevBtn.addEventListener("click", e => {
+
+        e.stopPropagation();
+
+        currentIndex--;
+
+        if (currentIndex < 0) {
+
+            currentIndex = galleryImages.length - 1;
+
+        }
+
+        showImage(currentIndex);
+
+    });
+
+    nextBtn.addEventListener("click", e => {
+
+        e.stopPropagation();
+
+        currentIndex++;
+
+        if (currentIndex >= galleryImages.length) {
+
+            currentIndex = 0;
+
+        }
+
+        showImage(currentIndex);
+
+    });
+
+    document.addEventListener("keydown", e => {
+
+        if (lightbox.style.display !== "flex") return;
+
+        if (e.key === "ArrowRight") {
+
+            nextBtn.click();
+
+        }
+
+        if (e.key === "ArrowLeft") {
+
+            prevBtn.click();
+
+        }
+
+    });
+
+}
 
 });
