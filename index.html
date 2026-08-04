@@ -28,10 +28,18 @@
 <meta name="twitter:image" content="https://promobiletint.ca/images/logo/logo.png">
 
 <!-- Favicon -->
-<link rel="icon" href="images/logo/favicon.ico" type="image/x-icon">
+<link rel="icon" href="images/logo/favicon.ico" sizes="any">
+<link rel="icon" href="images/logo/logo.png" type="image/png">
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="images/logo/logo.png" as="image">
+<link rel="preload"
+      href="https://res.cloudinary.com/deaipkmp/video/upload/v1784707644/hero_ptdgeg.mp4"
+      as="video"
+      type="video/mp4">
 
 <!-- Main CSS -->
 <link rel="stylesheet" href="css/style.css">
@@ -232,8 +240,8 @@ gtag('config', 'G-CGE2C8TN41');
     muted
     loop
     playsinline
-    webkit-playsinline
-    preload="metadata">
+    preload="auto"
+    poster="images/hero/hero-poster.jpg">
 
     <source
         src="https://res.cloudinary.com/deaipkmp/video/upload/v1784707644/hero_ptdgeg.mp4"
@@ -250,16 +258,16 @@ gtag('config', 'G-CGE2C8TN41');
         <div class="hero-line"></div>
 
         <p class="hero-subtitle">
-    PREMIUM CERAMIC &amp; CARBON WINDOW TINT
-</p>
+        PREMIUM CERAMIC • CARBON • MOBILE WINDOW TINTING
+        </p>
 
        <h1>
-    Mobile Window Tinting<br>
-    in Durham Region
-      </h1>
+       Premium Mobile Window Tinting
+       for Durham Region
+       </h1>
 
        <p class="hero-text">
-    Pro Mobile Tint provides professional mobile window tinting with premium ceramic and carbon films. We come directly to your home or workplace, serving Bowmanville, Clarington, Courtice, Oshawa, Whitby, Ajax, Pickering, Port Hope, Cobourg and communities across Durham Region.
+       Pro Mobile Tint provides professional mobile window tinting with premium ceramic and carbon films. We come directly to your home or workplace, serving Bowmanville, Clarington, Courtice, Oshawa, Whitby, Ajax, Pickering, Port Hope, Cobourg and communities across Durham Region.
        </p>
 
         <div class="hero-buttons">
@@ -271,19 +279,6 @@ gtag('config', 'G-CGE2C8TN41');
             <a href="tel:+16479015812" class="btn-secondary">
                 Call (647) 901-5812
             </a>
-
-
-         <a href="https://g.page/r/Cb4D_t0FIekoEBM/review"
-
-            class="btn-primary"
-
-             target="_blank"
-
-             rel="noopener">
-
-    ⭐ Leave Us a Google Review
-
-             </a>
 
         </div>
 
@@ -630,16 +625,23 @@ gtag('config', 'G-CGE2C8TN41');
         <div class="section-heading">
 
             <span class="section-tag">
-                CUSTOMER REVIEWS
+                GOOGLE REVIEWS
             </span>
 
             <h2>
-                What Our Customers Say
+                Trusted by Drivers Across Durham Region
             </h2>
+
+            <p>
+                Customer satisfaction is our highest priority. Read what local
+                drivers have to say about their experience with Pro Mobile Tint.
+            </p>
 
         </div>
 
         <div class="testimonial-grid">
+
+            <!-- Review 1 -->
 
             <div class="testimonial-card">
 
@@ -648,13 +650,15 @@ gtag('config', 'G-CGE2C8TN41');
                 </div>
 
                 <p>
-                    Amazing mobile service. The ceramic tint looks factory-installed
+                    Amazing mobile service. The ceramic tint looks factory-installed,
                     and the entire process was professional from start to finish.
                 </p>
 
                 <h4>— Google Customer</h4>
 
             </div>
+
+            <!-- Review 2 -->
 
             <div class="testimonial-card">
 
@@ -671,6 +675,8 @@ gtag('config', 'G-CGE2C8TN41');
 
             </div>
 
+            <!-- Review 3 -->
+
             <div class="testimonial-card">
 
                 <div class="stars">
@@ -678,13 +684,28 @@ gtag('config', 'G-CGE2C8TN41');
                 </div>
 
                 <p>
-                    They came to my workplace and finished everything perfectly.
-                    The car looks incredible.
+                    They came directly to my workplace and completed the installation
+                    perfectly. The vehicle looks incredible and stays much cooler.
                 </p>
 
                 <h4>— Google Customer</h4>
 
             </div>
+
+        </div>
+
+        <!-- Review Buttons -->
+
+        <div class="review-cta">
+
+            <a href="https://g.page/r/Cb4D_t0FIekoEBM/review"
+               class="btn-primary"
+               target="_blank"
+               rel="noopener">
+
+                ⭐ Leave a Google Review
+
+            </a>
 
         </div>
 
@@ -912,7 +933,7 @@ gtag('config', 'G-CGE2C8TN41');
 </section>
 
 <!-- =====================================
-     BEFORE & AFTER SLIDER
+     PREMIUM BEFORE & AFTER
 ====================================== -->
 
 <section class="before-after">
@@ -925,42 +946,58 @@ gtag('config', 'G-CGE2C8TN41');
 
             <p>SEE THE DIFFERENCE</p>
 
-            <h2>Premium Window Tint Transformation</h2>
+            <h2>Before & After Window Tint</h2>
 
             <p>
-                Drag the slider to compare the difference before and after professional XPEL window tint installation.
+                Drag the slider to reveal the transformation after a professional
+                Pro Mobile Tint installation.
             </p>
 
         </div>
 
-        <div class="comparison-slider">
+        <div class="premium-slider" id="premiumSlider">
+
+            <!-- BEFORE IMAGE -->
 
             <img
-                src="images/gallery/before.jpg"
-                alt="Vehicle before window tint">
+                src="images/gallery/car-window-tint-before.jpg"
+                class="slider-before"
+                alt="Vehicle Before Tint">
 
-            <div class="comparison-after">
+            <!-- AFTER IMAGE -->
+
+            <div class="slider-after">
 
                 <img
-                    src="images/gallery/after.jpg"
-                    alt="Vehicle after window tint">
+                    src="images/gallery/car-window-tint-after.jpg"
+                    alt="Vehicle After Tint">
 
             </div>
 
-            <div class="comparison-handle">
+            <!-- GOLD LINE -->
 
-                <span class="handle-circle">
+            <div class="slider-divider">
+
+                <div class="slider-handle">
+
                     <i class="fas fa-left-right"></i>
-                </span>
+
+                </div>
 
             </div>
 
-            <div class="label before-label">
+            <!-- LABELS -->
+
+            <div class="slider-label before">
+
                 BEFORE
+
             </div>
 
-            <div class="label after-label">
+            <div class="slider-label after">
+
                 AFTER
+
             </div>
 
         </div>
@@ -968,23 +1005,35 @@ gtag('config', 'G-CGE2C8TN41');
         <div class="comparison-features">
 
             <div class="feature">
+
                 <i class="fas fa-sun"></i>
+
                 <span>Superior Heat Rejection</span>
+
             </div>
 
             <div class="feature">
+
                 <i class="fas fa-shield-halved"></i>
+
                 <span>99% UV Protection</span>
+
             </div>
 
             <div class="feature">
+
                 <i class="fas fa-user-secret"></i>
+
                 <span>Enhanced Privacy</span>
+
             </div>
 
             <div class="feature">
+
                 <i class="fas fa-award"></i>
+
                 <span>Lifetime Warranty</span>
+
             </div>
 
         </div>
@@ -1455,7 +1504,6 @@ gtag('config', 'G-CGE2C8TN41');
     </div>
 
 </section>
-
 <!-- =====================================
      CALL TO ACTION
 ====================================== -->
@@ -1464,36 +1512,48 @@ gtag('config', 'G-CGE2C8TN41');
 
     <div class="container">
 
-        <h2>Premium Window Tint Starts Here</h2>
+        <span class="section-tag">
+            READY TO UPGRADE YOUR VEHICLE?
+        </span>
+
+        <h2>
+            Premium Mobile Window Tinting Starts Here
+        </h2>
 
         <p>
-
-            Experience professional mobile window tint installation with premium ceramic and carbon films backed by a lifetime warranty.
-
+            Get professional ceramic or carbon window tint installed at your
+            home, workplace, or dealership. Serving Bowmanville, Oshawa,
+            Whitby, Ajax, Pickering, Clarington, Port Hope, Cobourg,
+            and surrounding areas.
         </p>
 
         <div class="cta-features">
 
-            <span><i class="fas fa-check-circle"></i> Mobile Service</span>
+            <span>
+                <i class="fas fa-check-circle"></i>
+                Premium Ceramic & Carbon Films
+            </span>
 
-            <span><i class="fas fa-check-circle"></i> Lifetime Warranty</span>
+            <span>
+                <i class="fas fa-check-circle"></i>
+                Mobile Installation
+            </span>
 
-            <span><i class="fas fa-check-circle"></i> Premium Ceramic & Carbon Films</span>
+            <span>
+                <i class="fas fa-check-circle"></i>
+                Lifetime Warranty
+            </span>
 
         </div>
 
         <div class="hero-buttons">
 
             <a href="contact.html" class="btn-primary">
-
                 Get Free Quote
-
             </a>
 
-            <a href="tel:6479015812" class="btn-secondary">
-
+            <a href="tel:+16479015812" class="btn-secondary">
                 Call (647) 901-5812
-
             </a>
 
         </div>
@@ -1501,8 +1561,6 @@ gtag('config', 'G-CGE2C8TN41');
     </div>
 
 </section>
-
-</main>
 
 <!-- =====================================
      FOOTER
@@ -1564,14 +1622,21 @@ gtag('config', 'G-CGE2C8TN41');
 
                 <div class="footer-social">
 
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.facebook.com/promobiletint" target="_blank" rel="noopener">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
 
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                   <a href="https://www.instagram.com/promobiletint" target="_blank" rel="noopener">
+                        <i class="fab fa-instagram"></i>
+                   </a>
 
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                   <a href="https://www.tiktok.com/@promobiletint" target="_blank" rel="noopener">
+                       <i class="fab fa-tiktok"></i>
+                   </a>
 
-                    <a href="#"><i class="fab fa-google"></i></a>
-
+                   <a href="https://g.page/r/Cb4D_t0FIekoEBM" target="_blank" rel="noopener">
+                       <i class="fab fa-google"></i>
+                   </a>
                 </div>
 
             </div>
@@ -1587,7 +1652,7 @@ gtag('config', 'G-CGE2C8TN41');
     </div>
 
 </footer>
-<!-- ======================================================
+!-- ======================================================
      PRO MOBILE TINT PREMIUM SALE POPUP
 ====================================================== -->
 
@@ -1699,7 +1764,7 @@ gtag('config', 'G-CGE2C8TN41');
             (647) 901-5812
         </div>
 
-        <div class="sale-buttons">
+        <div class="sale-buttons"><
 
             <a href="contact.html" class="btn btn-primary sale-btn">
                 Get Free Quote
@@ -1714,3 +1779,41 @@ gtag('config', 'G-CGE2C8TN41');
     </div>
 
 </div>
+<!-- =====================================
+     FLOATING ACTION BUTTONS
+====================================== -->
+
+<div class="floating-buttons">
+
+    <a href="tel:+16479015812"
+       class="floating-btn call-btn"
+       aria-label="Call Pro Mobile Tint">
+
+        <i class="fas fa-phone"></i>
+        <span>Call</span>
+
+    </a>
+
+    <a href="contact.html"
+       class="floating-btn quote-btn"
+       aria-label="Get a Free Quote">
+
+        <i class="fas fa-comment-dots"></i>
+        <span>Quote</span>
+
+    </a>
+
+</div>
+<!-- =====================================
+
+     JAVASCRIPT
+
+====================================== -->
+
+<script src="js/main.js"></script>
+
+<script src="js/gallery.js"></script>
+
+</body>
+
+</html>
