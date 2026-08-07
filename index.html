@@ -28,21 +28,24 @@
 <meta name="twitter:image" content="https://promobiletint.ca/images/logo/logo.png">
 
 <!-- Favicon -->
-<link rel="icon" href="images/logo/favicon.ico" sizes="any">
-<link rel="icon" href="images/logo/logo.png" type="image/png">
+<link rel="icon" href="images/logo/logo.png" sizes="any" type="image/png">
+<meta name="theme-color" content="#0B0B0B">
 
 <!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-zNBHkQG59B7r+g0F+0VQ3lRg5r52YRWgehjhjCCl4dAIjcfUJhY3GfZlReXqN1hK1XHBZCq6Q1FANhVnwYQm2w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap">
 <link rel="preload" href="images/logo/logo.png" as="image">
-<link rel="preload"
-      href="https://res.cloudinary.com/deaipkmp/video/upload/v1784707644/hero_ptdgeg.mp4"
-      as="video"
-      type="video/mp4">
+<link rel="preload" href="https://res.cloudinary.com/deaipkmp/video/upload/v1784707644/hero_ptdgeg.mp4" as="video" type="video/mp4">
 
 <!-- Main CSS -->
 <link rel="stylesheet" href="css/style.css">
+
+<link
+    rel="preload"
+    href="images/hero/hero-poster.jpg"
+    as="image">
 
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CGE2C8TN41"></script>
@@ -170,7 +173,7 @@ gtag('config', 'G-CGE2C8TN41');
 
             <!-- Logo -->
 
-            <a href="index.html" class="logo">
+            <a href="index.html" class="logo" aria-current="page">
 
                 <img src="images/logo/logo.png" alt="Pro Mobile Tint Logo">
 
@@ -178,19 +181,19 @@ gtag('config', 'G-CGE2C8TN41');
 
             <!-- Navigation -->
 
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="primaryNav" role="menubar" aria-label="Primary site navigation">
 
-                <li><a href="index.html">Home</a></li>
+                <li role="none"><a role="menuitem" href="index.html" aria-current="page">Home</a></li>
 
-                <li><a href="about.html">About</a></li>
+                <li role="none"><a role="menuitem" href="about.html">About</a></li>
 
-                <li><a href="services.html">Services</a></li>
+                <li role="none"><a role="menuitem" href="services.html">Services</a></li>
 
-                <li><a href="gallery.html">Gallery</a></li>
+                <li role="none"><a role="menuitem" href="gallery.html">Gallery</a></li>
 
-                <li><a href="pricing.html">Pricing</a></li>
+                <li role="none"><a role="menuitem" href="pricing.html">Pricing</a></li>
 
-                <li><a href="contact.html">Contact</a></li>
+                <li role="none"><a role="menuitem" href="contact.html">Contact</a></li>
 
             </ul>
 
@@ -204,7 +207,7 @@ gtag('config', 'G-CGE2C8TN41');
 
             <!-- Mobile Menu Button -->
 
-            <button class="menu-toggle" aria-label="Toggle Navigation">
+            <button type="button" class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primaryNav">
 
                 <span></span>
 
@@ -295,10 +298,13 @@ poster="images/hero/hero-poster.jpg">
 
             <div class="about-image">
 
-                <img src="images/about/about-story.jpg"
-                     alt="Professional Window Tint Installation">
+    <img
+        src="images/about/about-story.jpg"
+        alt="Professional Window Tint Installation"
+        loading="lazy"
+        decoding="async">
 
-            </div>
+</div>
 
             <!-- Right Content -->
 
@@ -566,148 +572,9 @@ poster="images/hero/hero-poster.jpg">
 
 </section>
 <!-- =========================================
-     SERVICE AREAS
-========================================== -->
-
-<section class="service-areas">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <span class="section-tag">
-                SERVICE AREAS
-            </span>
-
-            <h2>
-                Proudly Serving Toronto & the GTA
-            </h2>
-
-            <p>
-                We bring premium mobile window tint installation directly to your
-                location throughout Toronto, Durham Region, and surrounding areas.
-            </p>
-
-        </div>
-
-        <div class="areas-grid">
-
-            <div class="area-card">Toronto</div>
-            <div class="area-card">North York</div>
-            <div class="area-card">Scarborough</div>
-            <div class="area-card">Markham</div>
-            <div class="area-card">Vaughan</div>
-            <div class="area-card">Richmond Hill</div>
-            <div class="area-card">Pickering</div>
-            <div class="area-card">Ajax</div>
-            <div class="area-card">Whitby</div>
-            <div class="area-card">Oshawa</div>
-            <div class="area-card">Bowmanville</div>
-            <div class="area-card">Clarington</div>
-
-        </div>
-
-    </div>
-
-</section>
-<!-- =========================================
      TESTIMONIALS
 ========================================== -->
 
-<section class="testimonials">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <span class="section-tag">
-                GOOGLE REVIEWS
-            </span>
-
-            <h2>
-                Trusted by Drivers Across Durham Region
-            </h2>
-
-            <p>
-                Customer satisfaction is our highest priority. Read what local
-                drivers have to say about their experience with Pro Mobile Tint.
-            </p>
-
-        </div>
-
-        <div class="testimonial-grid">
-
-            <!-- Review 1 -->
-
-            <div class="testimonial-card">
-
-                <div class="stars">
-                    ★★★★★
-                </div>
-
-                <p>
-                    Amazing mobile service. The ceramic tint looks factory-installed,
-                    and the entire process was professional from start to finish.
-                </p>
-
-                <h4>— Google Customer</h4>
-
-            </div>
-
-            <!-- Review 2 -->
-
-            <div class="testimonial-card">
-
-                <div class="stars">
-                    ★★★★★
-                </div>
-
-                <p>
-                    Fast response, excellent workmanship, and great attention to
-                    detail. Highly recommend Pro Mobile Tint.
-                </p>
-
-                <h4>— Google Customer</h4>
-
-            </div>
-
-            <!-- Review 3 -->
-
-            <div class="testimonial-card">
-
-                <div class="stars">
-                    ★★★★★
-                </div>
-
-                <p>
-                    They came directly to my workplace and completed the installation
-                    perfectly. The vehicle looks incredible and stays much cooler.
-                </p>
-
-                <h4>— Google Customer</h4>
-
-            </div>
-
-        </div>
-
-        <!-- Review Buttons -->
-
-        <div class="review-cta">
-
-            <a href="https://g.page/r/Cb4D_t0FIekoEBM/review"
-               class="btn-primary"
-               target="_blank"
-               rel="noopener">
-
-                ⭐ Leave a Google Review
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
 <!-- =========================================
      ABOUT CTA
 ========================================== -->
@@ -732,61 +599,12 @@ poster="images/hero/hero-poster.jpg">
     </div>
 
 </section>
-    <!-- =====================================
-
-         FLOATING STATS
-
-    ====================================== -->
-
-    <section class="stats">
-
-        <div class="container">
-
-            <div class="stats-card">
-
-                <div class="stat">
-
-                    <h2 class="counter">6+</h2>
-
-                    <p>Years Experience</p>
-
-                </div>
-
-                <div class="stat">
-
-                    <h2 class="counter">500+</h2>
-
-                    <p>Happy Customers</p>
-
-                </div>
-
-                <div class="stat">
-
-                    <h2 class="counter">99%</h2>
-
-                    <p>UV Protection</p>
-
-                </div>
-
-                <div class="stat">
-
-                    <h2>Lifetime</h2>
-
-                    <p>Warranty</p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
 
 <!-- =====================================
      SERVICES
 ====================================== -->
 
-<section class="si services">
+<section class="services">
 
     <div class="container">
 
@@ -951,49 +769,49 @@ poster="images/hero/hero-poster.jpg">
 
         </div>
 
-        <div class="premium-slider" id="premiumSlider">
+        <div class="premium-slider" id="premiumSlider" role="group" aria-label="Before and after window tint comparison">
 
-            <!-- BEFORE IMAGE -->
-
-            <img
+            <img loading="lazy" decoding="async"
                 src="images/gallery/car-window-tint-before.jpg"
-                class="slider-before"
-                alt="Vehicle Before Tint">
+                class="premium-compare__image premium-compare__image--before"
+                alt="Vehicle before professional window tint installation">
 
-            <!-- AFTER IMAGE -->
+            <div class="premium-compare__image-wrap">
 
-            <div class="slider-after">
-
-                <img
+                <img loading="lazy" decoding="async"
                     src="images/gallery/car-window-tint-after.jpg"
-                    alt="Vehicle After Tint">
+                    class="premium-compare__image premium-compare__image--after"
+                    alt="Vehicle after premium window tint installation">
 
             </div>
 
-            <!-- GOLD LINE -->
+            <div class="premium-compare__track" aria-hidden="true"></div>
 
-            <div class="slider-divider">
+            <button class="premium-compare__handle"
+                    type="button"
+                    role="slider"
+                    aria-label="Move comparison handle"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    aria-valuenow="50"
+                    title="Drag to compare"
+                    aria-describedby="premiumCompareHint"
+                    data-position="50">
 
-                <div class="slider-handle">
+                <span class="premium-compare__handle-ring"></span>
 
-                    <i class="fas fa-left-right"></i>
+                <span class="premium-compare__handle-icon" aria-hidden="true">
+                    <i class="fas fa-chevron-left"></i>
+                    <i class="fas fa-chevron-right"></i>
+                </span>
 
-                </div>
+            </button>
 
-            </div>
+            <div class="premium-compare__label premium-compare__label--before">BEFORE</div>
+            <div class="premium-compare__label premium-compare__label--after">AFTER</div>
 
-            <!-- LABELS -->
-
-            <div class="slider-label before">
-
-                BEFORE
-
-            </div>
-
-            <div class="slider-label after">
-
-                AFTER
-
+            <div class="premium-compare__hint" id="premiumCompareHint">
+                ← Drag to compare →
             </div>
 
         </div>
@@ -1073,7 +891,7 @@ poster="images/hero/hero-poster.jpg">
 
             <div class="tint-image">
 
-                <img
+                <img loading="lazy" decoding="async"
                     id="tintPreview"
                     src="images/gallery/tint-20.jpg"
                     alt="20% Window Tint">
@@ -1158,87 +976,6 @@ poster="images/hero/hero-poster.jpg">
 </section>
 
 <!-- =====================================
-     WHY CHOOSE US
-====================================== -->
-
-<section class="why-us">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <div class="section-line"></div>
-
-            <p>WHY CHOOSE US</p>
-
-            <h2>Why Drivers Choose Pro Mobile Tint</h2>
-
-        </div>
-
-        <div class="why-grid">
-
-            <div class="why-card">
-
-                <div class="why-icon">
-                    <i class="fas fa-shield-halved"></i>
-                </div>
-
-                <h3>Premium Ceramic & Carbon Films</h3>
-
-                <p>
-                    Premium ceramic and carbon window films engineered for exceptional heat rejection, UV protection, and long-lasting performance.
-                </p>
-
-            </div>
-
-            <div class="why-card">
-
-                <div class="why-icon">
-                    <i class="fas fa-truck-fast"></i>
-                </div>
-
-                <h3>Mobile Convenience</h3>
-
-                <p>
-                    We bring professional window tint installation directly to your home or workplace throughout Durham Region and the GTA.
-                </p>
-
-            </div>
-
-            <div class="why-card">
-
-                <div class="why-icon">
-                    <i class="fas fa-medal"></i>
-                </div>
-
-                <h3>Precision Installation</h3>
-
-                <p>
-                    Every installation is completed with meticulous attention to detail for a clean, factory-quality finish.
-                </p>
-
-            </div>
-
-            <div class="why-card">
-
-                <div class="why-icon">
-                    <i class="fas fa-award"></i>
-                </div>
-
-                <h3>Lifetime Warranty</h3>
-
-                <p>
-                    Every installation is backed by premium products and a lifetime warranty for complete peace of mind.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-<!-- =====================================
      WHY XPEL
 ====================================== -->
 
@@ -1310,11 +1047,11 @@ poster="images/hero/hero-poster.jpg">
 
         </div>
 
-        <div class="reviews-grid">
+        <div class="testimonials-grid">
 
-            <div class="review-card">
+            <div class="testimonial-card">
 
-                <div class="review-stars">
+                <div class="stars">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -1326,7 +1063,7 @@ poster="images/hero/hero-poster.jpg">
                     Professional, punctual and the tint quality exceeded my expectations. The convenience of having the service completed at my home made the experience even better.
                 </p>
 
-                <div class="review-footer">
+                <div class="customer">
 
                     <div class="review-avatar">
                         JD
@@ -1344,9 +1081,9 @@ poster="images/hero/hero-poster.jpg">
 
             </div>
 
-            <div class="review-card">
+            <div class="testimonial-card">
 
-                <div class="review-stars">
+                <div class="stars">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -1358,7 +1095,7 @@ poster="images/hero/hero-poster.jpg">
                     Excellent workmanship and attention to detail. The ceramic tint keeps the vehicle much cooler and looks fantastic.
                 </p>
 
-                <div class="review-footer">
+                <div class="customer">
 
                     <div class="review-avatar">
                         MR
@@ -1376,9 +1113,9 @@ poster="images/hero/hero-poster.jpg">
 
             </div>
 
-            <div class="review-card">
+            <div class="testimonial-card">
 
-                <div class="review-stars">
+                <div class="stars">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -1390,7 +1127,7 @@ poster="images/hero/hero-poster.jpg">
                     Fast response, competitive pricing and an incredibly clean installation. Highly recommend Pro Mobile Tint to anyone looking for premium service.
                 </p>
 
-                <div class="review-footer">
+                <div class="customer">
 
                     <div class="review-avatar">
                         AS
@@ -1648,7 +1385,7 @@ poster="images/hero/hero-poster.jpg">
     </div>
 
 </footer>
-!-- ======================================================
+<!-- ======================================================
      PRO MOBILE TINT PREMIUM SALE POPUP
 ====================================================== -->
 
@@ -1760,7 +1497,7 @@ poster="images/hero/hero-poster.jpg">
             (647) 901-5812
         </div>
 
-        <div class="sale-buttons"><
+        <div class="sale-buttons">
 
             <a href="contact.html" class="btn btn-primary sale-btn">
                 Get Free Quote
@@ -1806,9 +1543,7 @@ poster="images/hero/hero-poster.jpg">
 
 ====================================== -->
 
-<script src="js/main.js"></script>
-
-<script src="js/gallery.js"></script>
+<script type="module" src="js/main.js"></script>
 
 </body>
 

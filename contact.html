@@ -28,7 +28,7 @@
 <meta name="twitter:image" content="https://promobiletint.ca/images/logo/logo.png">
 
 <!-- Favicon -->
-<link rel="icon" href="images/logo/favicon.ico" type="image/x-icon">
+<link rel="icon" href="images/logo/logo.png" type="image/png">
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -180,13 +180,13 @@ gtag('config', 'G-CGE2C8TN41');
 
                 <li><a href="pricing.html">Pricing</a></li>
 
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.html" aria-current="page">Contact</a></li>
 
             </ul>
 
             <!-- Desktop Button -->
 
-            <a href="contact.html" class="btn-nav">
+            <a href="contact.html" class="btn-nav" aria-current="page">
 
                 Get Free Quote
 
@@ -271,10 +271,10 @@ gtag('config', 'G-CGE2C8TN41');
 </section>
 
 <!-- =====================================
-     CONTACT INFORMATION
+     CONTACT SECTION
 ====================================== -->
 
-<section class="contact-info">
+<section id="quote-form" class="contact-section">
 
     <div class="container">
 
@@ -287,137 +287,199 @@ gtag('config', 'G-CGE2C8TN41');
             <h2>Contact Pro Mobile Tint</h2>
 
             <p>
-                We'd love to hear from you. Contact us today for a free quote or
-                to book your mobile window tint installation.
+                We're ready to book your mobile window tint appointment. Reach out for a premium quote, same-day service, or answers about ceramic, hybrid and carbon films.
             </p>
 
         </div>
 
-        <div class="contact-grid">
+        <div class="contact-layout">
 
-            <div class="contact-card">
+            <div class="contact-summary">
 
-                <div class="contact-icon">
-                    <i class="fas fa-phone"></i>
+                <div class="contact-summary-card">
+
+                    <span class="badge">Luxury Support</span>
+
+                    <h3>Premium Mobile Tint Services</h3>
+
+                    <p>
+                        Fast, convenient mobile tint installations across Durham Region and the GTA. We bring premium ceramic and carbon films directly to your home, office, or dealership.
+                    </p>
+
+                    <address class="contact-address">
+                        <p><strong>9 Penfound Dr</strong><br>Bowmanville, ON L1C 5K8</p>
+                        <p><a href="tel:+16479015812">(647) 901-5812</a><br><a href="mailto:info@promobiletint.ca">info@promobiletint.ca</a></p>
+                    </address>
+
                 </div>
 
-                <h3>Phone</h3>
+                <div class="contact-cards">
 
-                <p>(647) 901-5812</p>
+                    <div class="contact-card">
 
-                <a href="tel:+16479015812" class="btn-primary">
-                    Call Now
-                </a>
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+
+                        <h3>Phone</h3>
+
+                        <p><a href="tel:+16479015812">(647) 901-5812</a></p>
+
+                        <a href="tel:+16479015812" class="btn-primary">
+                            Call Now
+                        </a>
+
+                    </div>
+
+                    <div class="contact-card">
+
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+
+                        <h3>Email</h3>
+
+                        <p><a href="mailto:info@promobiletint.ca">info@promobiletint.ca</a></p>
+
+                        <a href="mailto:info@promobiletint.ca" class="btn-primary">
+                            Email Us
+                        </a>
+
+                    </div>
+
+                    <div class="contact-card">
+
+                        <div class="contact-icon">
+                            <i class="fas fa-location-dot"></i>
+                        </div>
+
+                        <h3>Service Area</h3>
+
+                        <p>Bowmanville, Clarington, Courtice, Oshawa, Whitby, Ajax, Pickering and GTA</p>
+
+                    </div>
+
+                    <div class="contact-card">
+
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+
+                        <h3>Business Hours</h3>
+
+                        <p>Monday – Saturday</p>
+
+                        <span><time datetime="08:00">8:00 AM</time> – <time datetime="19:00">7:00 PM</time></span>
+
+                    </div>
+
+                </div>
 
             </div>
 
-            <div class="contact-card">
+            <div class="contact-form-panel">
 
-                <div class="contact-icon">
-                    <i class="fas fa-envelope"></i>
+                <div class="contact-form-card">
+
+                    <span class="badge badge-alt">Request Estimate</span>
+
+                    <h2 id="contactFormTitle">Request Your Free Estimate</h2>
+
+                    <p>
+                        Complete the form below and our team will follow up with a tailored quote for your vehicle.
+                    </p>
+
+                    <form class="contact-form" method="post" action="#" novalidate aria-labelledby="contactFormTitle" aria-describedby="formMessage">
+
+                        <div class="form-grid">
+
+                            <div class="form-row">
+                                <label for="contactName">Full Name</label>
+                                <input id="contactName" name="name" type="text" placeholder="Full Name" autocomplete="name" required>
+                            </div>
+
+                            <div class="form-row">
+                                <label for="contactPhone">Phone Number</label>
+                                <input id="contactPhone" name="phone" type="tel" placeholder="Phone Number" autocomplete="tel" required>
+                            </div>
+
+                            <div class="form-row">
+                                <label for="contactEmail">Email Address</label>
+                                <input id="contactEmail" name="email" type="email" placeholder="Email Address" autocomplete="email" required>
+                            </div>
+
+                            <div class="form-row">
+                                <label for="contactVehicle">Vehicle Make</label>
+                                <input id="contactVehicle" name="vehicle_make" type="text" placeholder="Vehicle Make" autocomplete="off" required>
+                            </div>
+
+                            <div class="form-row">
+                                <label for="contactModel">Vehicle Model</label>
+                                <input id="contactModel" name="vehicle_model" type="text" placeholder="Vehicle Model" autocomplete="off" required>
+                            </div>
+
+                            <div class="form-row">
+                                <label for="contactFilm">Window Film Type</label>
+                                <select id="contactFilm" name="film" autocomplete="off" required>
+                                    <option value="">Select Film</option>
+                                    <option value="ceramic">Ceramic XR</option>
+                                    <option value="hybrid">Hybrid HP</option>
+                                    <option value="carbon">Carbon CS</option>
+                                    <option value="not-sure">Not Sure</option>
+                                </select>
+                            </div>
+
+                            <div class="form-row">
+                                <label for="contactShade">Tint Shade</label>
+                                <select id="contactShade" name="shade" autocomplete="off" required>
+                                    <option value="">Select Tint Shade</option>
+                                    <option value="5">5%</option>
+                                    <option value="15">15%</option>
+                                    <option value="20">20%</option>
+                                    <option value="35">35%</option>
+                                    <option value="50">50%</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="form-row">
+                            <label for="contactMessage">Message</label>
+                            <textarea id="contactMessage" name="message" placeholder="Tell us about your vehicle or ask any questions..." rows="6" autocomplete="off" required></textarea>
+                        </div>
+
+                        <div id="formMessage" class="form-feedback" aria-live="polite"></div>
+
+                        <button type="submit" class="btn-primary">
+                            Request Free Quote
+                        </button>
+
+                    </form>
+
                 </div>
-
-                <h3>Email</h3>
-
-                <p>info@promobiletint.ca</p>
-
-                <a href="mailto:info@promobiletint.ca" class="btn-primary">
-                    Email Us
-                </a>
-
-            </div>
-
-            <div class="contact-card">
-
-                <div class="contact-icon">
-                    <i class="fas fa-location-dot"></i>
-                </div>
-
-                <h3>Service Area</h3>
-
-                <p>Bowmanville, Durham Region & GTA</p>
-
-            </div>
-
-            <div class="contact-card">
-
-                <div class="contact-icon">
-                    <i class="fas fa-clock"></i>
-                </div>
-
-                <h3>Business Hours</h3>
-
-                <p>Monday – Saturday</p>
-
-                <span>8:00 AM – 7:00 PM</span>
 
             </div>
 
         </div>
 
-    </div>
+        <div class="map-section">
 
-</section>
-
-<!-- =====================================
-     QUOTE FORM
-====================================== -->
-
-<section id="quote-form" class="quote-form">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <div class="section-line"></div>
-
-            <p>FREE QUOTE</p>
-
-            <h2>Request Your Free Estimate</h2>
-
-        </div>
-
-        <form class="contact-form">
-
-            <div class="form-grid">
-
-                <input type="text" placeholder="Full Name" required>
-
-                <input type="tel" placeholder="Phone Number" required>
-
-                <input type="email" placeholder="Email Address" required>
-
-                <input type="text" placeholder="Vehicle Make & Model">
-
-                <select>
-                    <option>Select Film</option>
-                    <option>Ceramic XR</option>
-                    <option>Hybrid HP</option>
-                    <option>Carbon CS</option>
-                    <option>Not Sure</option>
-                </select>
-
-                <select>
-                    <option>Select Tint Shade</option>
-                    <option>5%</option>
-                    <option>15%</option>
-                    <option>20%</option>
-                    <option>35%</option>
-                    <option>50%</option>
-                </select>
-
+            <div class="section-title map-title">
+                <div class="section-line"></div>
+                <p>VISIT US</p>
+                <h2>Service Area Map</h2>
             </div>
 
-            <textarea rows="6"
-                placeholder="Tell us about your vehicle or ask any questions..."></textarea>
+            <div class="map-wrapper">
+                <iframe
+                    src="https://www.google.com/maps?q=9+Penfound+Dr+Bowmanville+ON&output=embed"
+                    title="Pro Mobile Tint service area map"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
 
-            <button type="submit" class="btn-primary">
-
-                Request Free Quote
-
-            </button>
-
-        </form>
+        </div>
 
     </div>
 

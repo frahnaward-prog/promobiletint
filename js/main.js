@@ -1,431 +1,471 @@
-/*==========================================
-  PRO MOBILE TINT
-  Main JavaScript
-==========================================*/
+(() => {
+  'use strict';
 
-document.addEventListener("DOMContentLoaded", () => {
+  const qs = selector => document.querySelector(selector);
+  const qsa = selector => Array.from(document.querySelectorAll(selector));
 
-    /*==========================================
-      MOBILE NAVIGATION
-    ==========================================*/
+  const debounce = (callback, delay = 100) => {
+    let timeoutId;
+    return (...args) => {
+      clearTimeout(timeoutId);
+      timeoutId = window.setTimeout(() => callback(...args), delay);
+    };
+  };
 
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navMenu = document.querySelector(".nav-menu");
+  const initMobileNavigation = () => {
+    const menuToggle = qs('.menu-toggle');
+    const navMenu = qs('.nav-menu');
 
-    if (menuToggle && navMenu) {
-
-        menuToggle.addEventListener("click", () => {
-
-            menuToggle.classList.toggle("active");
-            navMenu.classList.toggle("active");
-            document.body.classList.toggle("menu-open");
-
-        });
-
-        // Close menu when clicking a navigation link
-        document.querySelectorAll(".nav-menu a").forEach(link => {
-
-            link.addEventListener("click", () => {
-
-                menuToggle.classList.remove("active");
-                navMenu.classList.remove("active");
-                document.body.classList.remove("menu-open");
-
-            });
-
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener("click", (e) => {
-
-            if (
-                !menuToggle.contains(e.target) &&
-                !navMenu.contains(e.target)
-            ) {
-
-                menuToggle.classList.remove("active");
-                navMenu.classList.remove("active");
-                document.body.classList.remove("menu-open");
-
-            }
-
-        });
-
+    if (!(menuToggle && navMenu)) {
+      return;
     }
 
-    /*==========================================
-      STICKY HEADER
-    ==========================================*/
+    const closeNavigation = () => {
+      menuToggle.classList.remove('active');
+      navMenu.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('menu-open');
+    };
 
-    const header = document.querySelector(".header");
+    const openNavigation = () => {
+      menuToggle.classList.add('active');
+      navMenu.classList.add('active');
+      menuToggle.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('menu-open');
+    };
 
-    if (header) {
+    const toggleNavigation = () => {
+      if (navMenu.classList.contains('active')) {
+        closeNavigation();
+      } else {
+        openNavigation();
+      }
+    };
 
-        window.addEventListener("scroll", () => {
+    menuToggle.addEventListener('click', toggleNavigation);
 
-            header.classList.toggle("scrolled", window.scrollY > 80);
-
-        });
-
-    }
-
-    /*==========================================
-      SMOOTH SCROLLING
-    ==========================================*/
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-
-        anchor.addEventListener("click", function (e) {
-
-            const target = document.querySelector(this.getAttribute("href"));
-
-            if (!target) return;
-
-            e.preventDefault();
-
-            target.scrollIntoView({
-
-                behavior: "smooth"
-
-            });
-
-        });
-
+    navMenu.addEventListener('click', event => {
+      if (event.target.closest('a')) {
+        closeNavigation();
+      }
     });
 
-    /*==========================================
-      SCROLL REVEAL
-    ==========================================*/
+    document.addEventListener('click', event => {
+      if (!menuToggle.contains(event.target) && !navMenu.contains(event.target)) {
+        closeNavigation();
+      }
+    });
 
-    const sections = document.querySelectorAll("section");
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        closeNavigation();
+      }
+    });
+  };
 
-    if (sections.length > 0) {
+  const initStickyHeader = () => {
+    const header = qs('.header');
+    if (!header) return;
 
-        const observer = new IntersectionObserver((entries) => {
+    let isTicking = false;
 
-            entries.forEach(entry => {
+    const updateHeader = () => {
+      header.classList.toggle('scrolled', window.scrollY > 80);
+      isTicking = false;
+    };
 
-                if (entry.isIntersecting) {
+    window.addEventListener('scroll', () => {
+      if (!isTicking) {
+        isTicking = true;
+        requestAnimationFrame(updateHeader);
+      }
+    }, { passive: true });
+  };
 
-                    entry.target.classList.add("show");
+  const initSmoothScroll = () => {
+    qsa('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', event => {
+        const targetId = anchor.getAttribute('href');
+        const target = targetId && qs(targetId);
 
-                    observer.unobserve(entry.target);
+        if (!target) return;
 
-                }
+        event.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  };
 
-            });
+  const initScrollReveal = () => {
+    const sections = qsa('section');
+    if (!sections.length || !window.IntersectionObserver) return;
 
-        }, {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.15 });
 
-            threshold: 0.15
+    sections.forEach(section => {
+      section.classList.add('hidden');
+      revealObserver.observe(section);
+    });
+  };
 
-        });
+  const initCounters = () => {
+    const counters = qsa('.counter');
+    if (!counters.length || !window.IntersectionObserver) return;
 
-        sections.forEach(section => {
+    const animateCounter = counter => {
+      const targetValue = Number(counter.textContent.replace(/\D/g, '')) || 0;
+      const suffix = counter.textContent.replace(/[0-9]/g, '');
+      let currentValue = Number(counter.dataset.count || 0);
+      const step = Math.max(1, Math.ceil(targetValue / 60));
 
-            section.classList.add("hidden");
+      const update = () => {
+        currentValue = Math.min(currentValue + step, targetValue);
+        counter.dataset.count = currentValue;
+        counter.textContent = `${currentValue}${suffix}`;
 
-            observer.observe(section);
+        if (currentValue < targetValue) {
+          requestAnimationFrame(update);
+        }
+      };
 
-        });
+      update();
+    };
 
-    }
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.4 });
 
-    /*==========================================
-      ANIMATED COUNTERS
-    ==========================================*/
+    counters.forEach(counter => counterObserver.observe(counter));
+  };
 
-    const counters = document.querySelectorAll(".counter");
+  const initSalePopup = () => {
+    const overlay = qs('#saleOverlay');
+    const popup = qs('.sale-popup');
+    const closeBtn = qs('#closeSale');
+    if (!(overlay && popup && closeBtn && window.localStorage)) return;
 
-    if (counters.length > 0) {
-
-        counters.forEach(counter => {
-
-            const target = parseInt(counter.textContent.replace(/\D/g, ""));
-
-            const suffix = counter.textContent.replace(/[0-9]/g, "");
-
-            const updateCounter = () => {
-
-                const current = parseInt(counter.dataset.count || 0);
-
-                const increment = Math.ceil(target / 60);
-
-                if (current < target) {
-
-                    const next = Math.min(current + increment, target);
-
-                    counter.dataset.count = next;
-
-                    counter.textContent = next + suffix;
-
-                    requestAnimationFrame(updateCounter);
-
-                }
-
-            };
-
-            const counterObserver = new IntersectionObserver((entries) => {
-
-                if (entries[0].isIntersecting) {
-
-                    updateCounter();
-
-                    counterObserver.disconnect();
-
-                }
-
-            });
-
-            counterObserver.observe(counter);
-
-        });
-
-    }
-
-});
-/*====================================================
-PRO MOBILE TINT SALE POPUP
-====================================================*/
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    const overlay = document.getElementById("saleOverlay");
-    const popup = document.querySelector(".sale-popup");
-    const closeBtn = document.getElementById("closeSale");
-
-    if (!overlay || !popup || !closeBtn) return;
-
-    const STORAGE_KEY = "proMobileTintSalePopup";
+    const STORAGE_KEY = 'proMobileTintSalePopup';
     const ONE_DAY = 24 * 60 * 60 * 1000;
-
-    const lastShown = localStorage.getItem(STORAGE_KEY);
+    const lastShown = Number(localStorage.getItem(STORAGE_KEY));
     const now = Date.now();
 
-    if (!lastShown || (now - Number(lastShown)) > ONE_DAY) {
-
-        setTimeout(() => {
-
-            overlay.classList.add("active");
-            document.body.style.overflow = "hidden";
-
-            localStorage.setItem(STORAGE_KEY, now);
-
-        }, 1000);
-
+    if (Number.isNaN(lastShown) || now - lastShown > ONE_DAY) {
+      window.setTimeout(() => {
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        localStorage.setItem(STORAGE_KEY, String(now));
+      }, 1000);
     }
 
-    function closePopup() {
+    const closePopup = () => {
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    };
 
-        overlay.classList.remove("active");
-        document.body.style.overflow = "";
+    closeBtn.addEventListener('click', closePopup);
 
+    overlay.addEventListener('click', event => {
+      if (event.target === overlay) {
+        closePopup();
+      }
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        closePopup();
+      }
+    });
+  };
+
+  const initComparisonSlider = () => {
+    const slider = qs('#premiumSlider');
+    if (!slider) return;
+
+    const afterWrap = slider.querySelector('.premium-compare__image-wrap');
+    const handle = slider.querySelector('.premium-compare__handle');
+    const hint = slider.querySelector('.premium-compare__hint');
+    const labelNow = value => {
+      handle.setAttribute('aria-valuenow', String(Math.round(value)));
+      handle.dataset.position = String(value);
+    };
+
+    if (!(afterWrap && handle)) return;
+
+    let isDragging = false;
+    let frame = null;
+    let sliderRect = slider.getBoundingClientRect();
+    let currentPercent = 50;
+    const localKey = 'proMobileTintCompareHint';
+
+    const setPosition = percent => {
+      currentPercent = Math.max(0, Math.min(100, percent));
+      afterWrap.style.width = `${currentPercent}%`;
+      handle.style.left = `${currentPercent}%`;
+      labelNow(currentPercent);
+    };
+
+    const updateRect = () => {
+      sliderRect = slider.getBoundingClientRect();
+    };
+
+    const animateTo = (targetPercent, duration = 260) => {
+      const start = currentPercent;
+      const delta = targetPercent - start;
+      const startTime = performance.now();
+
+      const loop = now => {
+        const progress = Math.min(1, (now - startTime) / duration);
+        setPosition(start + delta * easeOutQuint(progress));
+
+        if (progress < 1) {
+          frame = requestAnimationFrame(loop);
+        }
+      };
+
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(loop);
+    };
+
+    const easeOutQuint = t => 1 - Math.pow(1 - t, 5);
+
+    const pointerToPercent = event => {
+      const clientX = event.clientX ?? (event.touches && event.touches[0]?.clientX);
+      if (typeof clientX !== 'number') return currentPercent;
+      const position = Math.max(0, Math.min(clientX - sliderRect.left, sliderRect.width));
+      return sliderRect.width ? (position / sliderRect.width) * 100 : currentPercent;
+    };
+
+    const startDrag = event => {
+      if (event.pointerType === 'mouse' && event.button !== 0) return;
+      isDragging = true;
+      handle.classList.add('dragging');
+      updateRect();
+      hint?.classList.add('hidden');
+      localStorage.setItem(localKey, 'true');
+      event.preventDefault();
+      if (typeof slider.setPointerCapture === 'function' && event.pointerId != null) {
+        slider.setPointerCapture(event.pointerId);
+      }
+      setPosition(pointerToPercent(event));
+    };
+
+    const endDrag = event => {
+      if (!isDragging) return;
+      isDragging = false;
+      handle.classList.remove('dragging');
+      if (typeof slider.releasePointerCapture === 'function' && event.pointerId != null) {
+        slider.releasePointerCapture(event.pointerId);
+      }
+    };
+
+    const moveDrag = event => {
+      if (!isDragging) return;
+      event.preventDefault();
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => setPosition(pointerToPercent(event)));
+    };
+
+    const keyControl = event => {
+      if (document.activeElement !== handle) return;
+      const step = event.shiftKey ? 10 : 2;
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowDown') {
+        event.preventDefault();
+        setPosition(currentPercent - step);
+      }
+      if (event.key === 'ArrowRight' || event.key === 'ArrowUp') {
+        event.preventDefault();
+        setPosition(currentPercent + step);
+      }
+      if (event.key === 'Home') {
+        event.preventDefault();
+        setPosition(0);
+      }
+      if (event.key === 'End') {
+        event.preventDefault();
+        setPosition(100);
+      }
+    };
+
+    const handleInteraction = () => {
+      hint?.classList.add('hidden');
+      localStorage.setItem(localKey, 'true');
+    };
+
+    const onResize = () => {
+      updateRect();
+      setPosition(currentPercent);
+    };
+
+    slider.addEventListener('pointerdown', startDrag, { passive: false });
+    window.addEventListener('pointermove', moveDrag, { passive: false });
+    window.addEventListener('pointerup', endDrag, { passive: true });
+    window.addEventListener('pointercancel', endDrag, { passive: true });
+    handle.addEventListener('keydown', keyControl, { passive: true });
+    handle.addEventListener('focus', handleInteraction, { passive: true });
+    handle.addEventListener('pointerenter', handleInteraction, { passive: true });
+    handle.addEventListener('touchstart', handleInteraction, { passive: true });
+    window.addEventListener('resize', debounce(onResize, 120), { passive: true });
+
+    if (!localStorage.getItem(localKey)) {
+      setTimeout(() => animateTo(55, 260), 300);
+      setTimeout(() => animateTo(50, 260), 700);
     }
 
-    closeBtn.addEventListener("click", closePopup);
+    setPosition(50);
+  };
 
-    overlay.addEventListener("click", (e) => {
+  const initTintVisualizer = () => {
+    const buttons = qsa('.shade-btn');
+    const preview = qs('#tintPreview');
+    const title = qs('#shadeTitle');
+    const description = qs('#shadeDescription');
 
-        if (e.target === overlay) {
+    if (!buttons.length || !(preview && title && description)) return;
 
-            closePopup();
+    const resetActiveState = activeButton => {
+      buttons.forEach(button => button.classList.toggle('active', button === activeButton));
+    };
 
+    const updatePreview = button => {
+      const src = button.dataset.img;
+      const alt = button.dataset.title || '';
+      const desc = button.dataset.desc || '';
+      if (!src) return;
+
+      preview.style.opacity = '0';
+      preview.style.transform = 'translateY(0)';
+
+      const handleLoad = () => {
+        preview.style.opacity = '1';
+        preview.removeEventListener('load', handleLoad);
+      };
+
+      preview.addEventListener('load', handleLoad);
+      preview.src = src;
+      preview.alt = alt;
+      title.textContent = alt;
+      description.textContent = desc;
+    };
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        resetActiveState(button);
+        updatePreview(button);
+      });
+    });
+  };
+
+  const initContactForm = () => {
+    const form = qs('.contact-form');
+    const formMessage = qs('#formMessage');
+    if (!form || !formMessage) return;
+
+    const showMessage = (message, isError = false) => {
+      formMessage.textContent = message;
+      formMessage.style.color = isError ? '#f47777' : 'var(--gold)';
+    };
+
+    const validateEmail = value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    const validatePhone = value => /^\+?[0-9\s().-]{7,20}$/.test(value);
+
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+
+      const fields = Array.from(form.querySelectorAll('input, select, textarea'));
+      let firstInvalid = null;
+      let isValid = true;
+
+      fields.forEach(field => {
+        field.classList.remove('input-error');
+        const value = field.value.trim();
+
+        if (field.required && !value) {
+          isValid = false;
+          field.classList.add('input-error');
+          firstInvalid = firstInvalid || field;
         }
 
-    });
-
-    document.addEventListener("keydown", (e) => {
-
-        if (e.key === "Escape") {
-
-            closePopup();
-
+        if (field.type === 'email' && value && !validateEmail(value)) {
+          isValid = false;
+          field.classList.add('input-error');
+          firstInvalid = firstInvalid || field;
         }
 
+        if (field.type === 'tel' && value && !validatePhone(value)) {
+          isValid = false;
+          field.classList.add('input-error');
+          firstInvalid = firstInvalid || field;
+        }
+      });
+
+      if (!isValid) {
+        showMessage('Please complete all required fields with valid information.', true);
+        if (firstInvalid) {
+          firstInvalid.focus();
+        }
+        return;
+      }
+
+      showMessage('Thank you! Your quote request has been submitted. We will contact you shortly.', false);
+      form.reset();
     });
-});
-/* =====================================
-   BEFORE / AFTER SLIDER
-===================================== */
+  };
 
-const slider = document.querySelector(".comparison-slider");
+  const initFaqAccordion = () => {
+    const faqItems = qsa('.faq-item');
+    if (!faqItems.length) return;
 
-if (slider) {
+    faqItems.forEach(item => {
+      const answer = item.querySelector('p');
+      if (!answer) return;
 
-    const after = slider.querySelector(".comparison-after");
-    const handle = slider.querySelector(".comparison-handle");
+      answer.style.display = 'none';
+      item.setAttribute('aria-expanded', 'false');
 
-    let dragging = false;
+      item.addEventListener('click', () => {
+        const isOpen = answer.style.display === 'block';
 
-    function updateSlider(x) {
-
-        const rect = slider.getBoundingClientRect();
-
-        let position = x - rect.left;
-
-        position = Math.max(0, Math.min(position, rect.width));
-
-        const percent = (position / rect.width) * 100;
-
-        after.style.width = percent + "%";
-        handle.style.left = percent + "%";
-    }
-
-    slider.addEventListener("mousedown", (e) => {
-        dragging = true;
-        updateSlider(e.clientX);
-    });
-
-    window.addEventListener("mousemove", (e) => {
-        if (dragging) updateSlider(e.clientX);
-    });
-
-    window.addEventListener("mouseup", () => {
-        dragging = false;
-    });
-
-    slider.addEventListener("touchstart", (e) => {
-        dragging = true;
-        updateSlider(e.touches[0].clientX);
-    });
-
-    window.addEventListener("touchmove", (e) => {
-        if (!dragging) return;
-        updateSlider(e.touches[0].clientX);
-    });
-
-    window.addEventListener("touchend", () => {
-        dragging = false;
-    });
-
-}
-
-
-/* =====================================
-   TINT SHADE VISUALIZER
-===================================== */
-
-const shadeButtons = document.querySelectorAll(".shade-btn");
-const tintPreview = document.getElementById("tintPreview");
-const shadeTitle = document.getElementById("shadeTitle");
-const shadeDescription = document.getElementById("shadeDescription");
-
-if (shadeButtons.length) {
-
-    shadeButtons.forEach(button => {
-
-        button.addEventListener("click", () => {
-
-            // Active button
-            shadeButtons.forEach(btn => btn.classList.remove("active"));
-            button.classList.add("active");
-
-            // Fade out
-            tintPreview.style.opacity = "0";
-
-            setTimeout(() => {
-
-                // Change image
-                tintPreview.src = button.dataset.img;
-                tintPreview.alt = button.dataset.title;
-
-                // Update text
-                shadeTitle.textContent = button.dataset.title;
-                shadeDescription.textContent = button.dataset.desc;
-
-                // Keep every image aligned
-                tintPreview.style.transform = "translateY(0)";
-                tintPreview.style.objectPosition = "center 50%";
-
-                // Fade in
-                tintPreview.style.opacity = "1";
-
-            }, 180);
-
+        faqItems.forEach(otherItem => {
+          const otherAnswer = otherItem.querySelector('p');
+          if (otherAnswer) {
+            otherAnswer.style.display = 'none';
+            otherItem.setAttribute('aria-expanded', 'false');
+          }
         });
 
+        if (!isOpen) {
+          answer.style.display = 'block';
+          item.setAttribute('aria-expanded', 'true');
+        }
+      });
     });
+  };
 
-}
-/* =====================================
-   FAQ ACCORDION
-====================================== */
+  const initApp = () => {
+    initMobileNavigation();
+    initStickyHeader();
+    initSmoothScroll();
+    initScrollReveal();
+    initCounters();
+    initSalePopup();
+    initComparisonSlider();
+    initTintVisualizer();
+    initFaqAccordion();
+  };
 
-const faqItems = document.querySelectorAll(".faq-item");
-
-faqItems.forEach(item => {
-
-    const answer = item.querySelector("p");
-
-    if (!answer) return;
-
-    answer.style.display = "none";
-
-    item.addEventListener("click", () => {
-
-        const isOpen = answer.style.display === "block";
-
-        faqItems.forEach(faq => {
-
-            const p = faq.querySelector("p");
-
-            if (p) p.style.display = "none";
-
-        });
-
-        answer.style.display = isOpen ? "none" : "block";
-
-    });
-
-});
-/* =====================================
-   GALLERY LIGHTBOX
-===================================== */
-
-const galleryImages =
-document.querySelectorAll(".gallery-item img");
-
-const lightbox =
-document.getElementById("lightbox");
-
-const lightboxImg =
-document.getElementById("lightbox-img");
-
-const closeLightbox =
-document.querySelector(".close-lightbox");
-
-galleryImages.forEach(img=>{
-
-img.addEventListener("click",()=>{
-
-lightbox.style.display="flex";
-
-lightboxImg.src=img.src;
-
-});
-
-});
-
-if(closeLightbox){
-
-closeLightbox.onclick=()=>{
-
-lightbox.style.display="none";
-
-}
-
-}
-
-if(lightbox){
-
-lightbox.onclick=(e)=>{
-
-if(e.target===lightbox){
-
-lightbox.style.display="none";
-
-}
-
-}
-
-}
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+  } else {
+    initApp();
+  }
+})();
