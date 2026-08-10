@@ -450,6 +450,53 @@
       });
     });
   };
+    const initAnalyticsTracking = () => {
+    if (typeof window.gtag !== 'function') return;
+
+    // Track phone call clicks
+    qsa('a[href^="tel:"]').forEach(link => {
+      link.addEventListener('click', () => {
+        window.gtag('event', 'phone_call', {
+          event_category: 'engagement',
+          event_label: link.getAttribute('href'),
+          value: 1
+        });
+      });
+    });
+
+    // Track quote/contact clicks
+    qsa('a[href*="contact.html"]').forEach(link => {
+      link.addEventListener('click', () => {
+        window.gtag('event', 'quote_request', {
+          event_category: 'lead',
+          event_label: 'Contact / Quote Button',
+          value: 1
+        });
+      });
+    });
+
+    // Track Google Review clicks
+    qsa('a[href*="g.page"]').forEach(link => {
+      link.addEventListener('click', () => {
+        window.gtag('event', 'google_review_click', {
+          event_category: 'engagement',
+          event_label: 'Google Review',
+          value: 1
+        });
+      });
+    });
+
+    // Track Facebook clicks
+    qsa('a[href*="facebook.com"]').forEach(link => {
+      link.addEventListener('click', () => {
+        window.gtag('event', 'facebook_click', {
+          event_category: 'engagement',
+          event_label: 'Facebook',
+          value: 1
+        });
+      });
+    });
+  };
 
   const initApp = () => {
     initMobileNavigation();
@@ -461,6 +508,7 @@
     initComparisonSlider();
     initTintVisualizer();
     initFaqAccordion();
+    initAnalyticsTracking();
   };
 
   if (document.readyState === 'loading') {
