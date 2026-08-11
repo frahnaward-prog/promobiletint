@@ -427,8 +427,7 @@
         window.gtag('event', 'quote_form_submit', {
           event_category: 'lead',
           event_label: 'Quote Form Submitted',
-          value: 1,
-          debug_mode: true
+          value: 1
         });
       }
 
