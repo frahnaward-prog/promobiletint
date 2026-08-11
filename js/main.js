@@ -423,13 +423,12 @@
         false
       );
 
-
       if (typeof window.gtag === 'function') {
-
         window.gtag('event', 'quote_form_submit', {
           event_category: 'lead',
           event_label: 'Quote Form Submitted',
-          value: 1
+          value: 1,
+          debug_mode: true
         });
       }
 
