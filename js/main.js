@@ -408,7 +408,7 @@
         }
       });
 
-            if (!isValid) {
+      if (!isValid) {
         showMessage('Please complete all required fields with valid information.', true);
 
         if (firstInvalid) {
@@ -423,8 +423,11 @@
         false
       );
 
-      // Track successful quote request
+      console.log('QUOTE FORM SUBMIT REACHED');
+
       if (typeof window.gtag === 'function') {
+        console.log('SENDING GA4 quote_form_submit');
+
         window.gtag('event', 'quote_form_submit', {
           event_category: 'lead',
           event_label: 'Quote Form Submitted',
