@@ -408,112 +408,195 @@
         }
       });
 
-      if (!isValid) {
+            if (!isValid) {
         showMessage('Please complete all required fields with valid information.', true);
+
         if (firstInvalid) {
           firstInvalid.focus();
         }
+
         return;
       }
 
-      showMessage('Thank you! Your quote request has been submitted. We will contact you shortly.', false);
+      showMessage(
+        'Thank you! Your quote request has been submitted. We will contact you shortly.',
+        false
+      );
+
+      // Track successful quote request
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'quote_form_submit', {
+          event_category: 'lead',
+          event_label: 'Quote Form Submitted',
+          value: 1
+        });
+      }
+
       form.reset();
     });
   };
 
+
+  /*==================================================
+    FAQ ACCORDION
+  ==================================================*/
+
   const initFaqAccordion = () => {
     const faqItems = qsa('.faq-item');
+
     if (!faqItems.length) return;
 
     faqItems.forEach(item => {
+
       const answer = item.querySelector('p');
+
       if (!answer) return;
 
       answer.style.display = 'none';
       item.setAttribute('aria-expanded', 'false');
 
       item.addEventListener('click', () => {
+
         const isOpen = answer.style.display === 'block';
 
         faqItems.forEach(otherItem => {
+
           const otherAnswer = otherItem.querySelector('p');
+
           if (otherAnswer) {
             otherAnswer.style.display = 'none';
             otherItem.setAttribute('aria-expanded', 'false');
           }
+
         });
 
         if (!isOpen) {
           answer.style.display = 'block';
           item.setAttribute('aria-expanded', 'true');
         }
+
       });
+
     });
   };
-    const initAnalyticsTracking = () => {
-    if (typeof window.gtag !== 'function') return;
 
-    // Track phone call clicks
+
+  /*==================================================
+    GOOGLE ANALYTICS TRACKING
+  ==================================================*/
+
+  const initAnalyticsTracking = () => {
+
+    if (typeof window.gtag !== 'function') {
+      return;
+    }
+
+
+    // Phone Call Clicks
+
     qsa('a[href^="tel:"]').forEach(link => {
+
       link.addEventListener('click', () => {
+
         window.gtag('event', 'phone_call', {
           event_category: 'engagement',
           event_label: link.getAttribute('href'),
           value: 1
         });
+
       });
+
     });
 
-    // Track quote/contact clicks
+
+    // Quote / Contact Clicks
+
     qsa('a[href*="contact.html"]').forEach(link => {
+
       link.addEventListener('click', () => {
+
         window.gtag('event', 'quote_request', {
           event_category: 'lead',
           event_label: 'Contact / Quote Button',
           value: 1
         });
+
       });
+
     });
 
-    // Track Google Review clicks
+
+    // Google Review Clicks
+
     qsa('a[href*="g.page"]').forEach(link => {
+
       link.addEventListener('click', () => {
+
         window.gtag('event', 'google_review_click', {
           event_category: 'engagement',
           event_label: 'Google Review',
           value: 1
         });
+
       });
+
     });
 
-    // Track Facebook clicks
+
+    // Facebook Clicks
+
     qsa('a[href*="facebook.com"]').forEach(link => {
+
       link.addEventListener('click', () => {
+
         window.gtag('event', 'facebook_click', {
           event_category: 'engagement',
           event_label: 'Facebook',
           value: 1
         });
+
       });
+
     });
+
   };
+
+
+  /*==================================================
+    INITIALIZE APP
+  ==================================================*/
 
   const initApp = () => {
+
     initMobileNavigation();
+
     initStickyHeader();
+
     initSmoothScroll();
-    initScrollReveal();
+
     initCounters();
+
     initSalePopup();
+
     initComparisonSlider();
+
     initTintVisualizer();
+
     initFaqAccordion();
+
     initAnalyticsTracking();
+
   };
 
+
   if (document.readyState === 'loading') {
+
     document.addEventListener('DOMContentLoaded', initApp);
+
   } else {
+
     initApp();
+
   }
+
 })();
