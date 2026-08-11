@@ -566,13 +566,15 @@
     INITIALIZE APP
   ==================================================*/
 
-  const initApp = () => {
+    const initApp = () => {
 
     initMobileNavigation();
 
     initStickyHeader();
 
     initSmoothScroll();
+
+    initScrollReveal();
 
     initCounters();
 
@@ -582,11 +584,13 @@
 
     initTintVisualizer();
 
+    initContactForm();
+
     initFaqAccordion();
 
     initAnalyticsTracking();
 
-  };
+};
 
 
   if (document.readyState === 'loading') {
