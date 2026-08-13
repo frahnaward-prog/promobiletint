@@ -2176,6 +2176,25 @@ SALE POPUP
         width:38px;
         height:38px;
         font-size:16px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        padding:0;
+        line-height:1;
+        background:rgba(255,255,255,.14);
+        color:#fff;
+
+    }
+
+    .sale-close .fa-xmark{
+
+        display:block;
+        color:#fff;
+        font-family:"Font Awesome 6 Free";
+        font-size:20px;
+        font-style:normal;
+        font-weight:900;
+        line-height:1;
 
     }
 
@@ -2293,6 +2312,9 @@ SALE POPUP
 
     .sale-features span{
 
+        display:flex;
+        align-items:flex-start;
+        gap:6px;
         min-width:0;
         color:var(--gray);
         font-size:12px;
@@ -2303,8 +2325,16 @@ SALE POPUP
 
     .sale-features i{
 
+        display:inline-flex;
+        flex:0 0 1em;
+        align-items:center;
+        justify-content:center;
         color:var(--gold);
-        margin-right:4px;
+        font-family:"Font Awesome 6 Free";
+        font-size:14px;
+        font-style:normal;
+        font-weight:900;
+        line-height:1;
 
     }
 
@@ -2461,6 +2491,12 @@ SALE POPUP
     .sale-features span{
 
         font-size:11px;
+
+    }
+
+    .sale-features i{
+
+        font-size:13px;
 
     }
 
