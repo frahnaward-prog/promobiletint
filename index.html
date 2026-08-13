@@ -58,58 +58,101 @@ gtag('js', new Date());
 gtag('config', 'G-TYZ8MN5139');
 </script>
 
-<!-- Local Business Schema -->
+<!-- =========================================
+     PRO MOBILE TINT — LOCAL BUSINESS SCHEMA
+========================================= -->
+
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"AutomotiveBusiness",
-  "name":"Pro Mobile Tint",
-  "url":"https://promobiletint.ca",
-  "image":"https://promobiletint.ca/images/logo/logo.png",
-  "telephone":"+1-647-901-5812",
-  "address":{
+  "@context": "https://schema.org",
+  "@type": "AutomotiveBusiness",
+  "@id": "https://promobiletint.ca/#business",
+  "name": "Pro Mobile Tint",
+  "url": "https://promobiletint.ca/",
+  "logo": "https://promobiletint.ca/images/logo/logo.png",
+  "image": "https://promobiletint.ca/images/logo/logo.png",
+  "telephone": "+1-647-901-5812",
+  "priceRange": "$$",
 
-  "@type":"PostalAddress",
-
-  "streetAddress":"9 Penfound Dr",
-
-  "addressLocality":"Bowmanville",
-
-  "addressRegion":"ON",
-
-  "postalCode":"L1C 5K8",
-
-  "addressCountry":"CA"
-
-},
-  "areaServed":[
-    "Bowmanville",
-    "Clarington",
-    "Courtice",
-    "Oshawa",
-    "Whitby",
-    "Ajax",
-    "Pickering",
-    "Durham Region"
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Bowmanville"
+    },
+    {
+      "@type": "City",
+      "name": "Clarington"
+    },
+    {
+      "@type": "City",
+      "name": "Courtice"
+    },
+    {
+      "@type": "City",
+      "name": "Oshawa"
+    },
+    {
+      "@type": "City",
+      "name": "Whitby"
+    },
+    {
+      "@type": "City",
+      "name": "Ajax"
+    },
+    {
+      "@type": "City",
+      "name": "Pickering"
+    },
+    {
+      "@type": "City",
+      "name": "Newcastle"
+    },
+    {
+      "@type": "City",
+      "name": "Port Hope"
+    },
+    {
+      "@type": "City",
+      "name": "Cobourg"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Durham Region"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Greater Toronto Area"
+    }
   ],
-  "sameAs":[
-    "https://www.facebook.com/promobiletint"
+
+  "sameAs": [
+    "https://www.facebook.com/promobiletint",
+    "https://www.instagram.com/promobiletint",
+    "https://www.tiktok.com/@promobiletint",
+    "https://g.page/r/Cb4D_t0FIekoEBM"
   ]
 }
 </script>
 
-<!-- Services Schema -->
+
+<!-- =========================================
+     PRO MOBILE TINT — SERVICES SCHEMA
+========================================= -->
+
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"Service",
-  "serviceType":"Mobile Window Tinting",
-  "provider":{
-    "@type":"AutomotiveBusiness",
-    "name":"Pro Mobile Tint",
-    "url":"https://promobiletint.ca"
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://promobiletint.ca/#window-tinting-service",
+  "name": "Mobile Window Tinting",
+  "serviceType": "Automotive Window Tinting",
+  "provider": {
+    "@type": "AutomotiveBusiness",
+    "@id": "https://promobiletint.ca/#business",
+    "name": "Pro Mobile Tint"
   },
-  "areaServed":[
+
+  "areaServed": [
     "Bowmanville",
     "Clarington",
     "Courtice",
@@ -117,48 +160,103 @@ gtag('config', 'G-TYZ8MN5139');
     "Whitby",
     "Ajax",
     "Pickering",
-    "Durham Region"
+    "Newcastle",
+    "Port Hope",
+    "Cobourg",
+    "Durham Region",
+    "Greater Toronto Area"
   ],
-  "hasOfferCatalog":{
-    "@type":"OfferCatalog",
-    "name":"Window Tinting Services",
-    "itemListElement":[
+
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Pro Mobile Tint Services",
+
+    "itemListElement": [
+
       {
-        "@type":"Offer",
-        "itemOffered":{
-          "@type":"Service",
-          "name":"Ceramic Window Tint"
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Full Car Window Tinting"
         }
       },
+
       {
-        "@type":"Offer",
-        "itemOffered":{
-          "@type":"Service",
-          "name":"Carbon Window Tint"
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Ceramic Window Tint"
         }
       },
+
       {
-        "@type":"Offer",
-        "itemOffered":{
-          "@type":"Service",
-          "name":"Mobile Auto Window Tinting"
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Carbon Window Tint"
         }
       },
+
       {
-        "@type":"Offer",
-        "itemOffered":{
-          "@type":"Service",
-          "name":"Windshield Strip Tint"
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Front Window Tint"
+        }
+      },
+
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Windshield Tint and Sun Strip"
+        }
+      },
+
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Heat Rejection Window Tint"
+        }
+      },
+
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "UV Protection Window Film"
+        }
+      },
+
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Window Tint Removal"
+        }
+      },
+
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Paint Protection Film (PPF) Installation"
+        }
+      },
+
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Mobile Automotive Window Tinting"
         }
       }
+
     ]
   }
 }
 </script>
-
-</head>
-
-<body>
 
 <!-- =========================================
 
