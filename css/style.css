@@ -2989,8 +2989,33 @@ Small Phones
 }
 
 .before-after .section-title{
+    display:block;
+    position:relative;
+    visibility:visible;
+    opacity:1;
     max-width:760px;
     margin:0 auto 34px;
+    text-align:center;
+}
+
+.before-after .section-title .section-line,
+.before-after .section-title h2,
+.before-after .section-title p{
+    display:block;
+    position:relative;
+    visibility:visible;
+    opacity:1;
+}
+
+.before-after .section-title .section-line{
+    margin:0 auto 18px;
+}
+
+.before-after .section-title h2{
+    margin:0 0 14px;
+    color:#fff;
+    font-size:clamp(2.65rem,5vw,4rem);
+    line-height:1.08;
 }
 
 .before-after .section-title p:first-of-type{
@@ -3115,18 +3140,28 @@ Small Phones
     align-items:center;
     justify-content:center;
     gap:9px;
-    color:#fff;
+    color:#ffffff !important;
     font-size:15px;
-    z-index:1;
+    line-height:1;
+    opacity:1 !important;
+    visibility:visible !important;
+    z-index:5;
 }
 
 .premium-compare__handle-icon i{
-    display:inline-flex;
+    display:inline-block;
     align-items:center;
     justify-content:center;
     width:auto;
     height:auto;
-    color:#fff;
+    color:#ffffff !important;
+    font-family:"Font Awesome 6 Free" !important;
+    font-size:13px;
+    font-style:normal;
+    font-weight:900 !important;
+    line-height:1;
+    opacity:1 !important;
+    visibility:visible !important;
 }
 
 .premium-compare__label{
@@ -3250,6 +3285,14 @@ Small Phones
         margin-bottom:28px;
     }
 
+    .before-after .section-title h2{
+        font-size:clamp(2.35rem,8vw,3.2rem);
+    }
+
+    .before-after .section-title p:last-of-type{
+        font-size:15px;
+    }
+
     .premium-slider{
         width:calc(100% - 32px);
         border-radius:20px;
@@ -3279,6 +3322,15 @@ Small Phones
 
     .before-after .section-title{
         margin-bottom:24px;
+    }
+
+    .before-after .section-title h2{
+        font-size:2.25rem;
+    }
+
+    .before-after .section-title p:last-of-type{
+        font-size:14px;
+        line-height:1.6;
     }
 
     .premium-slider{
