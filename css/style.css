@@ -583,7 +583,7 @@ Hero Content
 
 .hero-subtitle{
 
-    font-family:'Cormorant Garamond',serif;
+    font-family:'Poppins',sans-serif;
 
     color:var(--gold);
 
@@ -753,7 +753,7 @@ Hero Animation
 }
 
 .stat h2{
-    font-family:'Cormorant Garamond',serif;
+    font-family:'Poppins',sans-serif;
     font-size:54px;
     font-weight:700;
     color:var(--gold);
@@ -956,7 +956,9 @@ SERVICES
 
 .service-card h3{
 
-    font-family:'Cormorant Garamond',serif;
+    font-family:'Poppins',sans-serif;
+
+    font-weight:600;
 
     font-size:34px;
 
@@ -1758,7 +1760,9 @@ Titles
 
 .footer h3{
 
-    font-family:'Cormorant Garamond',serif;
+    font-family:'Poppins',sans-serif;
+
+    font-weight:600;
 
     font-size:30px;
 
@@ -2074,7 +2078,9 @@ SALE POPUP
 
 .sale-header h2{
 
-    font-family:'Cormorant Garamond',serif;
+    font-family:'Poppins',sans-serif;
+
+    font-weight:600;
 
     font-size:52px;
 
@@ -2240,7 +2246,7 @@ SALE POPUP
 
 .sale-top{ padding:28px 40px 20px; text-align:center; }
 .sale-icon{ display:block; margin-bottom:8px; font-size:28px; }
-.sale-top h2{ margin:0 0 8px; color:#fff; font-family:'Cormorant Garamond',serif; font-size:42px; line-height:1; }
+.sale-top h2{ margin:0 0 8px; color:#fff; font-family:'Poppins',sans-serif; font-size:42px; font-weight:600; line-height:1; }
 .sale-top p{ margin:0; color:var(--gray); }
 .sale-table{ margin:0 40px; border-top:1px solid rgba(255,255,255,.1); }
 .sale-row{ display:grid; grid-template-columns:minmax(0,1fr) auto; gap:18px; align-items:center; padding:16px 0; border-bottom:1px solid rgba(255,255,255,.1); }
@@ -3922,6 +3928,8 @@ order:2;
 }
 
 .page-hero h1{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;
     font-size: 72px;
     margin: 18px 0;
 }
@@ -4083,6 +4091,8 @@ order:2;
 }
 
 .cta-box h2{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;
     font-size:3.4rem;
     margin-bottom:24px;
     color:#fff;
@@ -4165,6 +4175,10 @@ ABOUT STORY
 
 .about-content h2{
 
+    font-family:'Cormorant Garamond',serif;
+
+    font-weight:600;
+
     font-size:56px;
     margin:20px 0 30px;
 
@@ -4231,6 +4245,10 @@ WHY ABOUT
 }
 
 .section-heading h2{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-weight:600;
 
     font-size:56px;
     margin:20px 0;
@@ -4414,6 +4432,10 @@ COMPANY STATS
 
 .stat-box h2{
 
+    font-family:'Poppins',sans-serif;
+
+    font-weight:700;
+
     font-size:56px;
 
     color:var(--gold);
@@ -4525,12 +4547,17 @@ CONTACT PAGE
 
 .contact-summary-card h3,
 .contact-form-card h2,
-.contact-card h3,
 .map-title h2,
 .section-title h2{
     font-family:'Cormorant Garamond',serif;
     font-weight:600;
     color:#fff;
+}
+
+.contact-summary-card h3,
+.contact-card h3{
+    font-family:'Poppins',sans-serif;
+    font-weight:600;
 }
 
 .contact-summary-card h3{
@@ -4885,6 +4912,10 @@ ABOUT CTA
 }
 
 .about-cta h2{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-weight:600;
 
     font-size:60px;
 
