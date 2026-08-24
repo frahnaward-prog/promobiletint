@@ -61,6 +61,16 @@
         closeNavigation();
       }
     });
+
+    qsa('.nav-areas-toggle').forEach(toggle => {
+      toggle.addEventListener('click', event => {
+        event.preventDefault();
+        event.stopPropagation();
+        const item = toggle.closest('.nav-areas');
+        const isOpen = item.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+      });
+    });
   };
 
   const initStickyHeader = () => {

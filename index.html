@@ -52,7 +52,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap">
 <link rel="preload" href="images/logo/logo.png" as="image">
-<link rel="preload" href="https://res.cloudinary.com/deaipkmp/video/upload/v1784707644/hero_ptdgeg.mp4" as="video" type="video/mp4">
+<link rel="preload" href="videos/hero.mp4" as="video" type="video/mp4">
 
 <!-- Main CSS -->
 <link rel="stylesheet" href="css/style.css">
@@ -313,19 +313,37 @@ gtag('config', 'G-TYZ8MN5139');
                 </li>
 
                 <li role="none">
-                    <a role="menuitem" href="about.html">About</a>
+                    <a role="menuitem" href="services.html">Services</a>
                 </li>
 
                 <li role="none">
-                    <a role="menuitem" href="services.html">Services</a>
+                    <a role="menuitem" href="pricing.html">Pricing</a>
                 </li>
 
                 <li role="none">
                     <a role="menuitem" href="gallery.html">Gallery</a>
                 </li>
 
+                <li class="nav-areas" role="none">
+                    <button class="nav-areas-toggle" type="button" aria-expanded="false" aria-controls="serviceAreasMenu">
+                        Service Areas <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <div class="service-areas-menu" id="serviceAreasMenu">
+                        <div>
+                            <strong>Durham Region</strong>
+                            <a href="bowmanville-window-tinting.html">Bowmanville</a><a href="clarington-window-tinting.html">Clarington</a><a href="courtice-window-tinting.html">Courtice</a><a href="oshawa-window-tinting.html">Oshawa</a>
+                            <a href="whitby-window-tinting.html">Whitby</a><a href="ajax-window-tinting.html">Ajax</a><a href="pickering-window-tinting.html">Pickering</a><a href="newcastle-window-tinting.html">Newcastle</a>
+                        </div>
+                        <div>
+                            <strong>Surrounding Areas</strong>
+                            <a href="toronto-window-tinting.html">Toronto</a><a href="port-hope-window-tinting.html">Port Hope</a><a href="cobourg-window-tinting.html">Cobourg</a>
+                            <a class="areas-hub-link" href="service-areas.html">View all service areas <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </li>
+
                 <li role="none">
-                    <a role="menuitem" href="pricing.html">Pricing</a>
+                    <a role="menuitem" href="about.html">About</a>
                 </li>
 
                 <li role="none">
@@ -383,10 +401,13 @@ autoplay
 muted
 loop
 playsinline
+aria-hidden="true"
 preload="metadata"
 poster="images/hero/hero-poster.jpg">
 
 <source src="videos/hero.mp4" type="video/mp4">
+
+Your browser does not support HTML5 video.
 
 </video>
 
@@ -401,11 +422,11 @@ poster="images/hero/hero-poster.jpg">
         </p>
 
         <h1>
-        Mobile Window Tinting in Toronto & Durham Region
+        Premium Mobile Window Tinting in Toronto & Durham Region
         </h1> 
 
        <p class="hero-text">
-       Pro Mobile Tint provides professional mobile window tinting with premium ceramic and carbon films. We come directly to your home or workplace, serving Bowmanville, Clarington, Courtice, Oshawa, Whitby, Ajax, Pickering, Port Hope, Cobourg and communities across Durham Region.
+       Professional ceramic and carbon window tint installed at your home, workplace, or dealership. Serving Bowmanville, Clarington, Courtice, Oshawa, Whitby, Ajax, Pickering, Port Hope, Cobourg, and surrounding Durham Region communities.
        </p>
 
         <div class="hero-buttons">
@@ -423,11 +444,8 @@ poster="images/hero/hero-poster.jpg">
     </div>
 
 </section>
-<!-- =========================================
-     OUR STORY
-========================================== -->
-
-<section class="about-story">
+<!-- Homepage story is intentionally kept on about.html. -->
+<!--
 
     <div class="container">
 
@@ -496,7 +514,8 @@ poster="images/hero/hero-poster.jpg">
 
     </div>
 
-</section>
+</template>
+-->
 <!-- =========================================
      WHY CHOOSE US
 ========================================== -->
@@ -512,12 +531,11 @@ poster="images/hero/hero-poster.jpg">
             </span>
 
             <h2>
-                Why Drivers Trust Pro Mobile Tint
+                Why Choose Pro Mobile Tint
             </h2>
 
             <p>
-                Premium materials, expert installation, and mobile convenience
-                make Pro Mobile Tint the trusted choice across Toronto and the GTA.
+                Premium film, proven protection, and workmanship built to last.
             </p>
 
         </div>
@@ -526,7 +544,7 @@ poster="images/hero/hero-poster.jpg">
 
             <div class="why-card">
                 <i class="fa-solid fa-shield-halved"></i>
-                <h3>Premium Ceramic Films</h3>
+                <h3>Premium XPEL Films</h3>
                 <p>
                     Industry-leading ceramic and carbon films for maximum
                     performance and durability.
@@ -551,6 +569,7 @@ poster="images/hero/hero-poster.jpg">
                 </p>
             </div>
 
+            <template>
             <div class="why-card">
                 <i class="fa-solid fa-car-side"></i>
                 <h3>Mobile Service</h3>
@@ -568,6 +587,7 @@ poster="images/hero/hero-poster.jpg">
                     to detail for a factory-quality finish.
                 </p>
             </div>
+            </template>
 
             <div class="why-card">
                 <i class="fa-solid fa-medal"></i>
@@ -587,7 +607,7 @@ poster="images/hero/hero-poster.jpg">
      INSTALLATION PROCESS
 ========================================== -->
 
-<section class="process-section">
+<template class="homepage-process-source">
 
     <div class="container">
 
@@ -662,12 +682,9 @@ poster="images/hero/hero-poster.jpg">
 
     </div>
 
-</section>
-<!-- =========================================
-     COMPANY STATS
-========================================== -->
-
-<section class="company-stats">
+</template>
+<!-- Homepage company stats are intentionally omitted for a cleaner conversion path. -->
+<!--
 
     <div class="container">
 
@@ -709,16 +726,14 @@ poster="images/hero/hero-poster.jpg">
 
     </div>
 
-</section>
+</template>
+-->
 <!-- =========================================
      TESTIMONIALS
 ========================================== -->
 
-<!-- =========================================
-     ABOUT CTA
-========================================== -->
-
-<section class="about-cta">
+<!-- Homepage about CTA is intentionally omitted; the focused conversion CTA remains at the page end. -->
+<!--
 
     <div class="container">
 
@@ -737,7 +752,8 @@ poster="images/hero/hero-poster.jpg">
 
     </div>
 
-</section>
+</template>
+-->
 
 <!-- =====================================
      SERVICES
@@ -759,6 +775,21 @@ poster="images/hero/hero-poster.jpg">
                 We install premium XPEL window films with precision, delivering superior heat rejection, UV protection, privacy, and long-lasting performance.
             </p>
 
+        </div>
+
+        <div class="services-media">
+            <video
+                class="services-video"
+                autoplay
+                muted
+                loop
+                playsinline
+                aria-hidden="true"
+                preload="metadata"
+                poster="images/services/mobile-service.jpg">
+                <source src="videos/hero-1.mp4" type="video/mp4">
+                Your browser does not support HTML5 video.
+            </video>
         </div>
 
         <div class="services-grid">
@@ -881,6 +912,10 @@ poster="images/hero/hero-poster.jpg">
 
         </div>
 
+        <div class="services-all-link">
+            <a href="services.html" class="btn btn-primary">View All Services</a>
+        </div>
+
     </div>
 
 </section>
@@ -902,8 +937,7 @@ poster="images/hero/hero-poster.jpg">
             <h2>Before & After Window Tint</h2>
 
             <p>
-                Drag the slider to reveal the transformation after a professional
-                Pro Mobile Tint installation.
+                See the difference a professional Pro Mobile Tint installation makes.
             </p>
 
         </div>
@@ -1156,16 +1190,38 @@ poster="images/hero/hero-poster.jpg">
                 <p>No interference with GPS, Bluetooth, Wi-Fi or cellular signals.</p>
             </div>
 
+            <template>
             <div class="xpel-card">
                 <i class="fas fa-award"></i>
                 <h3>Lifetime Warranty</h3>
                 <p>Backed by XPEL's manufacturer warranty for long-lasting performance.</p>
             </div>
+            </template>
 
         </div>
 
     </div>
 
+</section>
+
+<!-- =========================================
+     INSTALLATION PROCESS
+========================================== -->
+
+<section class="process-section">
+    <div class="container">
+        <div class="section-heading">
+            <span class="section-tag">OUR PROCESS</span>
+            <h2>Simple, Professional, Convenient</h2>
+            <p>A straightforward mobile tinting experience from quote to finished vehicle.</p>
+        </div>
+        <div class="process-grid">
+            <div class="process-card"><div class="process-number">01</div><h3>Request a Quote</h3><p>Tell us your vehicle and preferred film for a fast, free quote.</p></div>
+            <div class="process-card"><div class="process-number">02</div><h3>Schedule Your Appointment</h3><p>Choose the time and location that works best for you.</p></div>
+            <div class="process-card"><div class="process-number">03</div><h3>Professional Installation</h3><p>We install your selected film with precise attention to detail.</p></div>
+            <div class="process-card"><div class="process-number">04</div><h3>Drive Away Protected</h3><p>Enjoy a refined look, greater comfort, and lasting protection.</p></div>
+        </div>
+    </div>
 </section>
 
 <!-- =====================================
@@ -1188,7 +1244,7 @@ poster="images/hero/hero-poster.jpg">
 
         <div class="reviews-cta">
             <div class="reviews-cta__icon" aria-hidden="true"><i class="fab fa-google"></i></div>
-            <p>See genuine customer feedback about Pro Mobile Tint and share your own experience after your window tint installation.</p>
+            <p>See genuine customer feedback about Pro Mobile Tint.</p>
             <div class="reviews-cta__buttons">
                 <a href="https://g.page/r/Cb4D_t0FIekoEBM" class="btn btn-primary" target="_blank" rel="noopener">Read Google Reviews</a>
                 <a href="https://g.page/r/Cb4D_t0FIekoEBM" class="btn btn-secondary" target="_blank" rel="noopener">Leave a Google Review</a>
@@ -1213,33 +1269,12 @@ poster="images/hero/hero-poster.jpg">
 
             <p>SERVICE AREAS</p>
 
-            <h2>Professional Mobile Window Tinting Across Durham Region & GTA</h2>
+            <h2>Serving Durham Region & Surrounding GTA</h2>
 
         </div>
 
-        <p class="service-area-text">
-
-    Pro Mobile Tint provides professional mobile window tinting throughout
-    Bowmanville, Clarington and Durham Region. We bring premium ceramic and
-    carbon window tint installation directly to your home, workplace or
-    dealership, making professional automotive window tinting convenient
-    throughout the Durham Region and surrounding GTA communities.
-
-</p>
-
-        <div class="areas-grid">
-            <a class="area-card" href="bowmanville-window-tinting.html"> <i class="fas fa-location-dot" aria-hidden="true"></i><span>Bowmanville</span></a>
-            <a class="area-card" href="clarington-window-tinting.html"><i class="fas fa-location-dot" aria-hidden="true"></i><span>Clarington</span></a>
-            <a class="area-card" href="courtice-window-tinting.html"><i class="fas fa-location-dot" aria-hidden="true"></i><span>Courtice</span></a>
-            <a class="area-card" href="oshawa-window-tinting.html"><i class="fas fa-location-dot" aria-hidden="true"></i><span>Oshawa</span></a>
-            <a class="area-card" href="whitby-window-tinting.html"><i class="fas fa-location-dot" aria-hidden="true"></i><span>Whitby</span></a>
-            <a class="area-card" href="ajax-window-tinting.html"><i class="fas fa-location-dot" aria-hidden="true"></i><span>Ajax</span></a>
-            <a class="area-card" href="pickering-window-tinting.html"><i class="fas fa-location-dot" aria-hidden="true"></i><span>Pickering</span></a>
-            <a class="area-card" href="newcastle-window-tinting.html"><i class="fas fa-location-dot" aria-hidden="true"></i><span>Newcastle</span></a>
-            <a class="area-card" href="port-hope-window-tinting.html"><i class="fas fa-location-dot" aria-hidden="true"></i><span>Port Hope</span></a>
-            <a class="area-card" href="cobourg-window-tinting.html"><i class="fas fa-location-dot" aria-hidden="true"></i><span>Cobourg</span></a>
-            <a class="area-card" href="toronto-window-tinting.html"><i class="fas fa-location-dot" aria-hidden="true"></i><span>Toronto</span></a>
-        </div>
+        <p class="service-area-text">We bring professional mobile window tinting directly to your home, workplace, or dealership.</p>
+        <div class="service-areas-action"><a href="service-areas.html" class="btn btn-primary">View Service Areas</a></div>
 
         </div>
 
@@ -1259,34 +1294,12 @@ poster="images/hero/hero-poster.jpg">
         </span>
 
         <h2>
-            Premium Mobile Window Tinting Starts Here
+            Ready to Upgrade Your Vehicle?
         </h2>
 
         <p>
-            Get professional ceramic or carbon window tint installed at your
-            home, workplace, or dealership. Serving Bowmanville, Oshawa,
-            Whitby, Ajax, Pickering, Clarington, Port Hope, Cobourg,
-            and surrounding areas.
+            Get premium ceramic or carbon window tint installed at your home, workplace, or dealership.
         </p>
-
-        <div class="cta-features">
-
-            <span>
-                <i class="fas fa-check-circle"></i>
-                Premium Ceramic & Carbon Films
-            </span>
-
-            <span>
-                <i class="fas fa-check-circle"></i>
-                Mobile Installation
-            </span>
-
-            <span>
-                <i class="fas fa-check-circle"></i>
-                Lifetime Warranty
-            </span>
-
-        </div>
 
         <div class="hero-buttons">
 
