@@ -1,94 +1,49 @@
 (() => {
   'use strict';
+  const projects = [...document.querySelectorAll('[data-lightbox-src]')];
+  const lightbox = document.querySelector('#galleryLightbox');
+  const preview = lightbox?.querySelector('img');
+  const counter = lightbox?.querySelector('.gallery-lightbox__counter');
+  let index = 0;
 
-  const qs = selector => document.querySelector(selector);
-  const qsa = selector => Array.from(document.querySelectorAll(selector));
+  const show = nextIndex => {
+    index = (nextIndex + projects.length) % projects.length;
+    const project = projects[index];
+    preview.src = project.dataset.lightboxSrc;
+    preview.alt = project.dataset.lightboxAlt || '';
+    counter.textContent = `${index + 1} / ${projects.length}`;
+  };
+  const close = () => {
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('gallery-lightbox-open');
+  };
 
-  const createGalleryLightbox = () => {
-    const galleryImages = qsa('.gallery-grid img');
-    if (!galleryImages.length) return;
-
-    const lightbox = document.createElement('div');
-    lightbox.className = 'lightbox';
-    lightbox.setAttribute('role', 'dialog');
-    lightbox.setAttribute('aria-modal', 'true');
-    lightbox.innerHTML = `
-      <span class="close-lightbox" aria-label="Close gallery">&times;</span>
-      <button class="lightbox-prev" type="button" aria-label="Previous image">&#10094;</button>
-      <img src="" alt="Gallery Image">
-      <button class="lightbox-next" type="button" aria-label="Next image">&#10095;</button>
-      <div class="lightbox-counter"></div>
-    `;
-
-    document.body.appendChild(lightbox);
-
-    const lightboxImage = lightbox.querySelector('img');
-    const closeButton = lightbox.querySelector('.close-lightbox');
-    const prevButton = lightbox.querySelector('.lightbox-prev');
-    const nextButton = lightbox.querySelector('.lightbox-next');
-    const counter = lightbox.querySelector('.lightbox-counter');
-
-    if (!(lightboxImage && closeButton && prevButton && nextButton && counter)) return;
-
-    let currentIndex = 0;
-
-    const updateLightbox = index => {
-      currentIndex = (index + galleryImages.length) % galleryImages.length;
-      const sourceImage = galleryImages[currentIndex];
-      lightboxImage.src = sourceImage.src;
-      lightboxImage.alt = sourceImage.alt || sourceImage.dataset.alt || 'Gallery image';
-      counter.textContent = `${currentIndex + 1} / ${galleryImages.length}`;
-      lightbox.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    };
-
-    const closeLightbox = () => {
-      lightbox.style.display = 'none';
-      document.body.style.overflow = '';
-    };
-
-    galleryImages.forEach((image, index) => {
-      image.style.cursor = 'zoom-in';
-      image.addEventListener('click', () => updateLightbox(index));
-    });
-
-    closeButton.addEventListener('click', closeLightbox);
-
-    lightbox.addEventListener('click', event => {
-      if (event.target === lightbox) {
-        closeLightbox();
-      }
-    });
-
-    prevButton.addEventListener('click', event => {
-      event.stopPropagation();
-      updateLightbox(currentIndex - 1);
-    });
-
-    nextButton.addEventListener('click', event => {
-      event.stopPropagation();
-      updateLightbox(currentIndex + 1);
-    });
-
+  if (lightbox && preview && counter && projects.length) {
+    projects.forEach((project, projectIndex) => project.addEventListener('click', () => {
+      show(projectIndex);
+      lightbox.classList.add('is-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('gallery-lightbox-open');
+      lightbox.querySelector('.gallery-lightbox__close').focus();
+    }));
+    lightbox.querySelector('.gallery-lightbox__close').addEventListener('click', close);
+    lightbox.querySelector('.gallery-lightbox__previous').addEventListener('click', () => show(index - 1));
+    lightbox.querySelector('.gallery-lightbox__next').addEventListener('click', () => show(index + 1));
+    lightbox.addEventListener('click', event => { if (event.target === lightbox) close(); });
     document.addEventListener('keydown', event => {
-      if (lightbox.style.display !== 'flex') return;
-      if (event.key === 'Escape') {
-        closeLightbox();
-      } else if (event.key === 'ArrowLeft') {
-        updateLightbox(currentIndex - 1);
-      } else if (event.key === 'ArrowRight') {
-        updateLightbox(currentIndex + 1);
-      }
+      if (!lightbox.classList.contains('is-open')) return;
+      if (event.key === 'Escape') close();
+      if (event.key === 'ArrowLeft') show(index - 1);
+      if (event.key === 'ArrowRight') show(index + 1);
     });
-  };
-
-  const initialize = () => {
-    createGalleryLightbox();
-  };
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initialize);
-  } else {
-    initialize();
   }
+
+  const previewImage = document.querySelector('#galleryTintPreview');
+  document.querySelectorAll('[data-shade-src]').forEach(button => button.addEventListener('click', () => {
+    document.querySelectorAll('[data-shade-src]').forEach(item => item.classList.remove('active'));
+    button.classList.add('active');
+    previewImage.src = button.dataset.shadeSrc;
+    previewImage.alt = button.dataset.shadeAlt;
+  }));
 })();
