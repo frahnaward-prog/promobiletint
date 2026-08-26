@@ -5385,6 +5385,78 @@ order:-1;
     .floating-btn { width:46px; height:46px; justify-content:center; padding:0; }
 }
 
+/* Homepage conversion-path refinements */
+.why-about {
+    padding:42px 0;
+    background:#101010;
+}
+.why-about .section-heading {
+    display:none;
+}
+.why-about .why-grid {
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:0;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:16px;
+    overflow:hidden;
+}
+.why-about .why-card {
+    min-height:0;
+    padding:18px 20px;
+    border:0;
+    border-radius:0;
+    background:transparent;
+    box-shadow:none;
+}
+.why-about .why-card + .why-card { border-left:1px solid rgba(255,255,255,.1); }
+.why-about .why-card::before { display:none; }
+.why-about .why-card:hover { transform:none; background:rgba(255,255,255,.03); }
+.why-about .why-card i { font-size:21px; margin:0 0 7px; color:var(--gold); }
+.why-about .why-card h3 { margin-bottom:0; font-size:.88rem; line-height:1.35; }
+.why-about .why-card p { display:none; }
+
+@media (max-width:767px) {
+    body { padding-bottom:76px; }
+    .why-about { padding:22px 0; }
+    .why-about .why-grid { grid-template-columns:repeat(2,minmax(0,1fr)); border-radius:12px; }
+    .why-about .why-card { display:block; padding:14px 12px; text-align:center; }
+    .why-about .why-card + .why-card { border-left:0; }
+    .why-about .why-card:nth-child(even) { border-left:1px solid rgba(255,255,255,.1); }
+    .why-about .why-card:nth-child(n+3) { border-top:1px solid rgba(255,255,255,.1); }
+    .why-about .why-card i { display:block; font-size:19px; margin-bottom:5px; }
+    .why-about .why-card h3 { font-size:.76rem; }
+
+    .floating-buttons {
+        right:0;
+        bottom:0;
+        left:0;
+        display:grid;
+        grid-template-columns:1fr 1.35fr;
+        gap:1px;
+        padding:1px 1px calc(1px + env(safe-area-inset-bottom));
+        background:rgba(214,179,106,.45);
+        z-index:1003;
+        box-shadow:0 -8px 28px rgba(0,0,0,.38);
+    }
+    .floating-btn {
+        width:100%;
+        min-width:0;
+        min-height:58px;
+        justify-content:center;
+        gap:8px;
+        padding:12px 10px;
+        border-radius:0;
+        background:#111;
+        color:#fff;
+        font-size:13px;
+        letter-spacing:.02em;
+        box-shadow:none;
+    }
+    .floating-btn.quote-btn { background:var(--gold); color:#111; }
+    .floating-btn:hover { transform:none; box-shadow:none; }
+    .floating-btn i { font-size:15px; }
+}
+
 /* ==================================================
    GALLERY PAGE
    ================================================== */
