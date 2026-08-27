@@ -163,6 +163,7 @@
     const popup = qs('.sale-popup');
     const closeBtn = qs('#closeSale');
     if (!(overlay && popup && closeBtn && window.localStorage)) return;
+    if (qs('.contact-form')) return;
 
     const STORAGE_KEY = 'proMobileTintSalePopup';
     const ONE_DAY = 24 * 60 * 60 * 1000;
@@ -174,7 +175,7 @@
         overlay.classList.add('active');
         document.body.style.overflow = 'hidden';
         localStorage.setItem(STORAGE_KEY, String(now));
-      }, 1000);
+      }, window.matchMedia('(max-width: 767px)').matches ? 12000 : 8000);
     }
 
     const closePopup = () => {
