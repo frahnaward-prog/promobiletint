@@ -381,6 +381,11 @@
     const formMessage = qs('#formMessage');
     if (!form || !formMessage) return;
 
+    const submitButton = form.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton ? submitButton.textContent : '';
+    let isSubmitting = false;
+    let formStartTracked = false;
+
     const showMessage = (message, isError = false) => {
       formMessage.textContent = message;
       formMessage.style.color = isError ? '#f47777' : 'var(--gold)';
@@ -389,8 +394,24 @@
     const validateEmail = value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
     const validatePhone = value => /^\+?[0-9\s().-]{7,20}$/.test(value);
 
-    form.addEventListener('submit', event => {
+    const trackFormStart = () => {
+      if (formStartTracked) return;
+      formStartTracked = true;
+
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'quote_form_start', {
+          form_name: 'quote_form',
+          page_path: window.location.pathname
+        });
+      }
+    };
+
+    form.addEventListener('focusin', trackFormStart);
+
+    form.addEventListener('submit', async event => {
       event.preventDefault();
+
+      if (isSubmitting) return;
 
       const fields = Array.from(form.querySelectorAll('input, select, textarea'));
       let firstInvalid = null;
@@ -429,20 +450,53 @@
         return;
       }
 
-      showMessage(
-        'Thank you! Your quote request has been submitted. We will contact you shortly.',
-        false
-      );
-
-      if (typeof window.gtag === 'function') {
-        window.gtag('event', 'quote_form_submit', {
-          event_category: 'lead',
-          event_label: 'Quote Form Submitted',
-          value: 1
-        });
+      isSubmitting = true;
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
       }
+      showMessage('Sending your request...', false);
 
-      form.reset();
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: {
+            Accept: 'application/json'
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error(`Form submission failed with status ${response.status}`);
+        }
+
+        const serviceType = form.querySelector('[name="film"]')?.value || 'not-specified';
+        showMessage(
+          'Thank you! Your quote request has been submitted. We will contact you shortly.',
+          false
+        );
+
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'lead_submitted', {
+            form_name: 'quote_form',
+            page_path: window.location.pathname,
+            service_type: serviceType
+          });
+        }
+
+        form.reset();
+      } catch (error) {
+        showMessage(
+          "We couldn't send your request. Please try again or call (647) 901-5812.",
+          true
+        );
+      } finally {
+        isSubmitting = false;
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalButtonText;
+        }
+      }
     });
   };
 
@@ -525,10 +579,9 @@
 
       link.addEventListener('click', () => {
 
-        window.gtag('event', 'quote_request', {
-          event_category: 'lead',
-          event_label: 'Contact / Quote Button',
-          value: 1
+        window.gtag('event', 'quote_cta_click', {
+          form_name: 'quote_form',
+          page_path: window.location.pathname
         });
 
       });
