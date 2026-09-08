@@ -5583,3 +5583,69 @@ order:-1;
 @media (max-width:600px){.gallery-projects,.gallery-shades,.gallery-before-after,.gallery-videos,.gallery-social{padding:54px 0;}.gallery-section-title{margin-bottom:28px;}.gallery-grid,.gallery-comparison{grid-template-columns:1fr;gap:16px;}.gallery-item{border-radius:16px;}.gallery-overlay{padding:42px 16px 16px;}.gallery-shades__image,.gallery-comparison figure,.gallery-video{border-radius:16px;}.gallery-shades .shade-buttons{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));}.gallery-shades .shade-btn{min-width:0;padding:10px 4px;}.gallery-reviews{padding:54px 0;}.gallery-reviews .testimonial-card{padding:22px;}.gallery-lightbox{padding:16px;}.gallery-lightbox img{max-height:calc(100vh - 120px);}.gallery-lightbox__previous{left:12px;}.gallery-lightbox__next{right:12px;}.gallery-lightbox__close{top:12px;right:12px;}}
 .gallery-hero{min-height:560px;}
 @media (max-width:600px){.gallery-hero{min-height:0;padding:132px 0 72px;}.gallery-hero h1{font-size:clamp(2.8rem,12vw,3.5rem);}.gallery-hero p{font-size:16px;line-height:1.65;}}
+
+/* Homepage paint protection film packages */
+.ppf-packages {
+    padding:100px 0;
+    background:var(--black);
+}
+.ppf-packages .section-heading { margin-bottom:48px; }
+.ppf-packages .section-heading h2 { font-size:clamp(32px,4vw,52px); }
+.ppf-grid {
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:22px;
+}
+.ppf-card {
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    min-width:0;
+    padding:42px 24px 24px;
+    background:linear-gradient(150deg,var(--card),var(--dark));
+    border:1px solid rgba(214,179,106,.22);
+    border-radius:var(--radius);
+}
+.ppf-card--popular {
+    border-color:var(--gold);
+    box-shadow:0 0 28px rgba(214,179,106,.1);
+}
+.ppf-popular {
+    position:absolute;
+    top:-14px;
+    left:24px;
+    padding:5px 14px;
+    border-radius:999px;
+    background:var(--gold);
+    color:var(--black);
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:1px;
+}
+.ppf-card h3 { font-family:'Poppins',sans-serif; font-size:20px; letter-spacing:1px; }
+.ppf-price { margin:22px 0; }
+.ppf-price span { display:block; color:var(--gray); font-size:12px; letter-spacing:1.5px; }
+.ppf-price strong { display:block; color:var(--gold-light); font-size:42px; line-height:1.3; }
+.ppf-coverage { flex:1; margin-bottom:28px; }
+.ppf-coverage li {
+    position:relative;
+    padding-left:20px;
+    margin-bottom:10px;
+    color:var(--gray);
+    font-size:15px;
+    line-height:1.65;
+}
+.ppf-coverage li::before { content:'✓'; position:absolute; left:0; color:var(--gold); }
+.ppf-card .btn-primary { min-width:0; width:100%; min-height:48px; padding:15px 10px; font-size:13px; text-align:center; }
+.ppf-card .btn-primary:focus-visible { outline:2px solid var(--gold-light); outline-offset:5px; }
+.ppf-disclaimer { max-width:850px; margin:28px auto 0; color:var(--gray); font-size:14px; line-height:1.7; text-align:center; }
+@media (max-width:1200px) {
+    .ppf-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:30px; }
+}
+@media (max-width:600px) {
+    .ppf-packages { padding:64px 0; }
+    .ppf-grid { grid-template-columns:minmax(0,1fr); }
+    .ppf-packages .section-heading { margin-bottom:36px; }
+    .ppf-card { padding:36px 24px 24px; }
+    .ppf-card .btn-primary { font-size:14px; }
+}

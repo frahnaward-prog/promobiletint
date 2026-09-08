@@ -107,7 +107,8 @@
   };
 
   const initScrollReveal = () => {
-    const sections = qsa('section');
+    // Long package lists stay visible without waiting for a scroll-reveal threshold.
+    const sections = qsa('section:not(.ppf-packages)');
     if (!sections.length || !window.IntersectionObserver) return;
 
     const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -380,6 +381,27 @@
     const form = qs('.contact-form');
     const formMessage = qs('#formMessage');
     if (!form || !formMessage) return;
+
+    // Only accept known PPF packages; never copy arbitrary URL text into the form.
+    const quoteParams = new URLSearchParams(window.location.search);
+    const ppfPackageNames = {
+      silver: 'Silver PPF',
+      gold: 'Gold PPF',
+      platinum: 'Platinum PPF',
+      diamond: 'Diamond PPF'
+    };
+    const packageKey = quoteParams.get('package');
+    if (quoteParams.get('service') === 'ppf' &&
+        Object.prototype.hasOwnProperty.call(ppfPackageNames, packageKey)) {
+      const film = form.querySelector('[name="film"]');
+      const shade = form.querySelector('[name="shade"]');
+      const message = form.querySelector('[name="message"]');
+      if (film && !film.value) film.value = 'ppf';
+      if (shade && !shade.value) shade.value = 'not-applicable';
+      if (message && !message.value) {
+        message.value = `I'd like a quote for the ${ppfPackageNames[packageKey]} package.`;
+      }
+    }
 
     const submitButton = form.querySelector('button[type="submit"]');
     const originalButtonText = submitButton ? submitButton.textContent : '';
