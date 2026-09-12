@@ -5660,11 +5660,11 @@ html.ppf-coverage-open { overflow:hidden; scrollbar-gutter:stable; }
 .ppf-coverage-header { position:sticky; top:0; z-index:1; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:20px 28px; background:#11161b; border-bottom:1px solid #3e3930; }
 .ppf-coverage-header h2 { margin:0; font:600 clamp(17px,2vw,24px)/1.4 'Poppins',sans-serif; letter-spacing:1px; }
 .ppf-coverage-close { flex:none; min-height:44px; padding:10px 14px; border:1px solid #807253; border-radius:8px; background:#22272b; color:#fff; font:600 12px 'Poppins',sans-serif; cursor:pointer; }
-.ppf-coverage-layout { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:32px; padding:28px; }
+.ppf-coverage-layout { display:grid; grid-template-columns:minmax(0,1.6fr) minmax(0,1fr); gap:32px; padding:28px; }
 .ppf-coverage-visual { min-width:0; margin:0; padding:12px; border:1px solid #3d4248; border-radius:12px; background:#171e25; align-self:start; }
-.ppf-coverage-image { display:block; width:100%; max-width:360px; height:auto; margin:auto; }
+.ppf-coverage-image { display:block; width:100%; height:auto; object-fit:contain; border-radius:8px; margin:auto; }
 .ppf-coverage-visual figcaption { margin:8px 0; color:#d2d6da; font-size:13px; line-height:1.6; }
-.ppf-coverage-swatch { display:inline-block; width:14px; height:14px; margin-right:5px; vertical-align:middle; background:repeating-linear-gradient(135deg,#bd9447 0 4px,#f6d895 4px 5px); }
+.ppf-coverage-swatch { display:inline-block; width:14px; height:14px; margin-right:5px; vertical-align:middle; background:#ff811f; }
 .ppf-coverage-details { min-width:0; }
 .ppf-coverage-details .ppf-price { margin:0 0 20px; }
 .ppf-coverage-key { list-style:decimal; padding-left:28px; margin:0 0 20px; }
